@@ -1,4 +1,9 @@
 <template name="mainLayout">
+  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
+    {{>theme_header}} {{>theme_menu}}
+
+  </div>
   <aside>
     {{> yield "aside"}}
   </aside>
@@ -10,8 +15,9 @@
   <footer>
     {{> yield "footer"}}
   </footer>
+
 </template>
 
 <template name="main">
-main
+  main
 </template>
