@@ -1,17 +1,31 @@
-// Router.onBeforeAction(function () {
-//   if (!Meteor.userId()) {
-//     var correntRouter = Router.current().route.getName()
-//     if(correntRouter === 'criarconta')
-//       this.render('criarContaUsuario')
-//     else this.render('login');
-//   } else {
-//     this.next();
-//   }
-// });;
-
-Router.route('/', {
-  template: 'main'
+appDeclareRoute({
+  url: '/login',
+  search: '/',
+  role: 'public',
+  template: 'login',
+  layoutTemplate: 'blankLayout',
+  title() {
+    return '';
+  }
 });
-Router.route('/criarconta', {
-  template: 'criarContaUsuario'
+
+appDeclareRoute({
+  url: '/',
+  search: '/',
+  role: 'public',
+  template: 'main',
+  title() {
+    return '';
+  }
+});
+
+appDeclareRoute({
+  url: '/criarconta',
+  search: '/',
+  role: 'public',
+  template: 'criarContaUsuario',
+  layoutTemplate: 'blankLayout',
+  title() {
+    return '';
+  }
 });

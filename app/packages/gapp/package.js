@@ -17,6 +17,7 @@ Package.onUse(function (api) {
   api.use('mongo');
   api.mainModule('gapp.js');
   api.addFiles('appDeclare.js');
+  api.addFiles('client/declare.client.js');
   api.addFiles('server/db/schema/db-perdido.js', 'server');
   api.addFiles('server/db/query/qry-perdido.js', 'server');
   api.addFiles('server/soa/soa-perdido.js', 'server');
@@ -25,6 +26,7 @@ Package.onUse(function (api) {
     'appDeclareCollection',
     'appCollections',
     'appDeclareService',
+    'appDeclareRoute'
   ])
 });
 

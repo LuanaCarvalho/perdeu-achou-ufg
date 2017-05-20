@@ -3,7 +3,9 @@ appCollections = {}
 var gApp = {
     db: appCollections,
     query: {},
-    soa: {}
+    soa: {},
+    state: {},
+    apptitle: {}
 }
 App = gApp
 appDeclareCollection = function (collection, schema) {
