@@ -9,15 +9,6 @@ appDeclareRoute({
   }
 });
 
-appDeclareRoute({
-  url: '/',
-  search: '/',
-  role: 'public',
-  template: 'main',
-  title() {
-    return '';
-  }
-});
 
 appDeclareRoute({
   url: '/criarconta',

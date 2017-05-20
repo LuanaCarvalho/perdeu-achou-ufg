@@ -1,0 +1,13 @@
+
+.perdeu .mdl-card__title {
+  min-height: 200px;
+  background-image: url('images/perdeu.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.achou .mdl-card__title {
+  min-height: 200px;
+  background-image: url('images/achou.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
