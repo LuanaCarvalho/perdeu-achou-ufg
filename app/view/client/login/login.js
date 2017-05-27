@@ -1,19 +1,22 @@
 // import { Template } from 'meteor/templating'
 
 Template.login.events({
-  'click .login': function (event, templateInstance) {
+  'click .fazerLogin': function (event, templateInstance) {
     var email = qs('#email').value;
     var password = qs('#password').value
     if (email && password) {
       Meteor.loginWithPassword(email, password, function (err) {
-        if (!err) Router.go('/');
+        if (err) {
+          swal('Oops...a', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
+        }
+        else Router.go('/');
       });
     }
   },
   'click .btnFacebook': function (event) {
     Meteor.loginWithFacebook({}, function (err) {
       if (err) {
-        throw new Meteor.Error("Facebook login failed");
+        swal('Oops...b', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
       }
       else Router.go('/');
     });
@@ -21,21 +24,9 @@ Template.login.events({
   'click .btnGoogle': function (event) {
     Meteor.loginWithGoogle({}, function (err) {
       if (err) {
-        throw new Meteor.Error("Facebook login failed");
+        swal('Oops...c  ', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
       }
       else Router.go('/');
-    });
-  },
-  'click .esqueciSenha': function (event) {
-    var email = $('[name=email]').val();
-    var options = {};
-    options.email = email;
-    Accounts.forgotPassword(options, function (err) {
-      if (err) {
-        console.log(err.reason);
-      } else {
-        alert('Enviamos um e-mail para ' + email + ' de definição de senha!');
-      }
     });
   },
 });

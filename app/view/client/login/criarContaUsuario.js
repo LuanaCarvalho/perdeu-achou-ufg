@@ -1,5 +1,6 @@
 Template.criarContaUsuario.events({
     'click .criarConta': function (event, templateInstance) {
+        debugger
         var email = qs('#email').value;
         var password = qs('#password').value
         if (email && password) {
@@ -7,6 +8,9 @@ Template.criarContaUsuario.events({
                 if (!err) {
                     Meteor.loginWithPassword(email, password);
                     Router.go('/');
+                } else {
+                    if(err.reason === 'Email already exists.')
+                    swal('Oops...', 'Esse e-mail já foi cadastrado. Caso não lembre a essa, acesse a opção de lembrar senha!', 'error');
                 }
             })
         }
@@ -14,7 +18,7 @@ Template.criarContaUsuario.events({
     'click .btnFacebook': function (event) {
         Meteor.loginWithFacebook({}, function (err) {
             if (err) {
-                throw new Meteor.Error("Facebook login failed");
+                swal('Oops...', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
             }
             else Router.go('/');
         });
@@ -22,7 +26,7 @@ Template.criarContaUsuario.events({
     'click .btnGoogle': function (event) {
         Meteor.loginWithGoogle({}, function (err) {
             if (err) {
-                throw new Meteor.Error("Facebook login failed");
+                swal('Oops...', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
             }
             else Router.go('/');
         });

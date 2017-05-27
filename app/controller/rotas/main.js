@@ -20,3 +20,13 @@ appDeclareRoute({
     return '';
   }
 });
+appDeclareRoute({
+  url: '/esqueciasenha',
+  search: '/',
+  role: 'public',
+  template: 'esqueceuSenha',
+  layoutTemplate: 'blankLayout',
+  title() {
+    return '';
+  }
+});

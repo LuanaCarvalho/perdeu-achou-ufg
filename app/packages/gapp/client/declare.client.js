@@ -14,7 +14,8 @@ appDeclareRoute = function (routeOptions) {
             layoutTemplate: typeof routeOptions.layoutTemplate === 'undefined' ? 'mainLayout' : routeOptions.layoutTemplate,
             waitOn() {
                 if (!Meteor.userId()) {
-                    if (!(/\/criarconta/g.test(routeOptions.url)))
+                    if (!(/\/criarconta/g.test(routeOptions.url) ||
+                        /\/esqueciasenha/g.test(routeOptions.url)))
                         this.redirect('/login');
                 }
                 if (routeOptions.subscriptions)
