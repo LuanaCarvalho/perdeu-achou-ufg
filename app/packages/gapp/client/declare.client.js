@@ -36,6 +36,7 @@ appDeclareRoute = function (routeOptions) {
                     query: self.params.query || {},
                     data: data || {}
                 };
+                App.state.usuario = App.query.usuarioLogado(Meteor.userId()).fetch()[0];
                 appDeclareRoute.doSearch = function (text) {
                     if (typeof routeOptions.search === 'function')
                         routeOptions.search(text);

@@ -9,17 +9,22 @@ Package.describe({
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
 });
-
 Package.onUse(function (api) {
   api.versionsFrom('1.4.4.2');
   api.use('ecmascript');
   api.use('aldeed:collection2');
   api.use('mongo');
+  api.use('accounts-ui');
+  api.use('accounts-password');
+  api.use('accounts-facebook');
+  api.use('accounts-google');
   api.mainModule('gapp.js');
   api.addFiles('appDeclare.js');
   api.addFiles('client/declare.client.js');
+  api.addFiles('server/config/accounts.js', 'server');
   api.addFiles('server/db/schema/db-perdido.js', 'server');
-  api.addFiles('server/db/query/qry-perdido.js', 'server');
+  api.addFiles('server/db/query/qry-perdido.js');
+  api.addFiles('server/db/query/qry-usuario.js');
   api.addFiles('server/soa/soa-perdido.js', 'server');
   api.export([
     'App',
