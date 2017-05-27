@@ -1,8 +1,5 @@
 Meteor.methods({
     'usuario.criarconta': function (email, password) {
-        return Accounts.createUser({
-            email: email,
-            password: password
-        });
+        return App.soa.usuario.criarConta(email, password);
     }
 })

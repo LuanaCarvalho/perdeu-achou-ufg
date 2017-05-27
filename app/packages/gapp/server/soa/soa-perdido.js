@@ -6,4 +6,4 @@ appDeclareService('perdido', {
     }
 })
 
-App.soa.perdido.adicionar()
+// App.soa.perdido.adicionar()

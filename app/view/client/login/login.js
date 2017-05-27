@@ -14,19 +14,31 @@ Template.login.events({
     }
   },
   'click .btnFacebook': function (event) {
-    Meteor.loginWithFacebook({}, function (err) {
+    Meteor.loginWithFacebook({}, function (err, userId) {
       if (err) {
-        swal('Oops...b', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
+        swal('Oops...', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
       }
-      else Router.go('/');
+      else {
+        Meteor.call('permissao.adicionar', Meteor.userId(), ['default'], function (err) {
+          if (!err) {
+            Router.go('/');
+          }
+        });
+      }
     });
   },
   'click .btnGoogle': function (event) {
-    Meteor.loginWithGoogle({}, function (err) {
+    Meteor.loginWithGoogle({}, function (err, userId) {
       if (err) {
-        swal('Oops...c  ', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
+        swal('Oops...', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
       }
-      else Router.go('/');
+      else {
+        Meteor.call('permissao.adicionar', Meteor.userId(), ['default'], function (err) {
+          if (!err) {
+            Router.go('/');
+          }
+        });
+      }
     });
   },
 });
