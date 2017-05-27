@@ -29,3 +29,6 @@ gapp
 aldeed:collection2
 zodiase:mdl
 accounts-password
+accounts-facebook
+accounts-google
+service-configuration
