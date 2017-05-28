@@ -42,7 +42,8 @@ Package.onUse(function (api) {
     'appCollections',
     'appDeclareService',
     'appDeclareRoute',
-    'declareRules'
+    'declareRules',
+    'appRoute'
   ])
 });
 

@@ -182,3 +182,7 @@ _:-ms-input-placeholder, :root .demo-graph {
   margin-bottom: 40px;
   z-index: 900;
 }
+
+.mdl-total {
+  width: 100% !important
+}

@@ -18,7 +18,7 @@
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
             {{#each menu}} {{#if isInRole roles}}
-            <a class="mdl-navigation__link" href="{{url}}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">{{icon}}</i>{{name}}</a>
+            <a class="mdl-navigation__link menuItem"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">{{icon}}</i>{{name}}</a>
             {{/if}} {{/each}}
         </nav>
     </div>

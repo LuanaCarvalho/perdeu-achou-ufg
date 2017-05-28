@@ -27,6 +27,11 @@ Template.theme_menu.events({
     'click .sair': function (event, templateInstance) {
         event.preventDefault();
         Meteor.logout();
-        Router.go('/');
-    }
+        appRoute('/');
+    },
+    'click .menuItem': function (event, templateInstance) {
+        event.preventDefault();
+        appRoute(this.url);
+    },
+
 })
