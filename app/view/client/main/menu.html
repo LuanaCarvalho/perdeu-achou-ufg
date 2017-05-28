@@ -1,7 +1,7 @@
 <template name="theme_menu">
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-            <img src="images/user.jpg" class="demo-avatar">
+            <!--<img src="images/user.jpg" class="demo-avatar">-->
             <div class="demo-avatar-dropdown">
                 <span>{{nomeUsuario}}</span>
                 <div class="mdl-layout-spacer"></div>
@@ -17,8 +17,9 @@
             </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            {{#each menu}}
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">{{icon}}</i>{{name}}</a>            {{/each}}
+            {{#each menu}} {{#if isInRole roles}}
+            <a class="mdl-navigation__link" href="{{url}}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">{{icon}}</i>{{name}}</a>
+            {{/if}} {{/each}}
         </nav>
     </div>
 </template>

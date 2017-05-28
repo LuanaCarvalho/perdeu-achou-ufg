@@ -14,6 +14,7 @@ Package.onUse(function (api) {
   api.use('ecmascript');
   api.use('aldeed:collection2');
   api.use('mongo');
+  api.use('iron:router');
   api.use('accounts-ui');
   api.use('accounts-password');
   api.use('accounts-facebook');
@@ -21,6 +22,7 @@ Package.onUse(function (api) {
   api.mainModule('gapp.js');
   api.addFiles('appDeclare.js');
   api.addFiles('client/declare.client.js');
+  api.addFiles('client/pode.client.js');
   api.addFiles('server/config/accounts.js', 'server');
   api.addFiles('server/config/init-db.js', 'server');
   api.addFiles('server/db/schema/db-perdido.js', 'server');

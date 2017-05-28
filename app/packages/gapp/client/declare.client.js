@@ -45,11 +45,7 @@ appDeclareRoute = function (routeOptions) {
                     else
                         appRoute(routeOptions.search + location.search + location.hash);
                 };
-                var _pode = true;
-                // if (typeof routeOptions.pode === 'function') _pode = routeOptions.pode.call(self);
-                // else _pode = routeOptions.role && pode(routeOptions.role);
-                // if (routeOptions.roleZscan)
-                //     _pode = _pode || podeZscan(routeOptions.roleZscan); // TODO 1171
+                var _pode = routeOptions.role && pode(routeOptions.role);
                 if (_pode) {
                     if (typeof routeOptions.title === 'function')
                         App.apptitle.text = routeOptions.title.call(self) + ' - Perdeu? Achou! UFG';

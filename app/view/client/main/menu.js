@@ -10,8 +10,17 @@ Template.theme_menu.helpers({
 var _menu = [
     {
         icon: 'home',
-        name: 'Home'
-    }
+        name: 'Home',
+        url: '/',
+        roles: 'default'
+    },
+    {
+        icon: 'home',
+        name: 'Categoria',
+        url: '/categoria',
+        roles: 'super'
+    },
+
 ]
 
 Template.theme_menu.events({
