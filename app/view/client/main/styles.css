@@ -31,6 +31,9 @@
 .demo-drawer {
   border: none;
 }
+.demo-background {
+  background-color: white;
+}
 /* iOS Safari specific workaround */
 .demo-drawer .mdl-menu__container {
   z-index: -1;
@@ -167,4 +170,15 @@ _:-ms-input-placeholder, :root .demo-graph {
   display: flex;
   box-sizing: border-box;
   align-items: center;
+}
+
+
+.btnRigth {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900;
 }

@@ -47,12 +47,18 @@ appDeclareRoute = function (routeOptions) {
                 };
                 var _pode = routeOptions.role && pode(routeOptions.role);
                 if (_pode) {
-                    if (typeof routeOptions.title === 'function')
+                    if (typeof routeOptions.title === 'function') {
                         App.apptitle.text = routeOptions.title.call(self) + ' - Perdeu? Achou! UFG';
-                    else if (typeof routeOptions.title === 'string')
+                        App.apptitle.menu = routeOptions.title.call(self);
+                    }
+                    else if (typeof routeOptions.title === 'string') {
+                        App.apptitle.menu = routeOptions.title;
                         App.apptitle.text = routeOptions.title + ' - Perdeu? Achou! UFG';
-                    else
+                    }
+                    else {
+                        App.apptitle.menu = 'Perdeu? Achou! UFG'
                         App.apptitle.text = 'Perdeu? Achou! UFG';
+                    }
                     if (routeOptions.action)
                         routeOptions.action.call(self);
                     self.render(routeOptions.template, { data });
@@ -64,6 +70,8 @@ appDeclareRoute = function (routeOptions) {
                         query: {},
                         data: {}
                     };
+                    App.apptitle.menu = 'Perdeu? Achou! UFG'
+                    App.apptitle.text = 'Perdeu? Achou! UFG';
                     appDeclareRoute.doSearch = function (text) {
                         if (typeof routeOptions.search === 'function')
                             routeOptions.search(text);
@@ -72,7 +80,7 @@ appDeclareRoute = function (routeOptions) {
                         else
                             appRoute(routeOptions.search + location.search + location.hash);
                     };
-                    return self.render('naopossuipermissao');
+                    // return self.render('naopossuipermissao');
                 }
             }
         });

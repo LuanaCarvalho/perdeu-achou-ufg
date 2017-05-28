@@ -3,7 +3,7 @@ Template.theme_menu.helpers({
         return _menu;
     },
     nomeUsuario() {
-        return App.state.usuario.profile.name;
+        return App.state.usuario && App.state.usuario.profile && App.state.usuario.profile.name;
     }
 })
 

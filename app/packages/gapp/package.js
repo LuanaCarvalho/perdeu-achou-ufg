@@ -25,13 +25,17 @@ Package.onUse(function (api) {
   api.addFiles('client/pode.client.js');
   api.addFiles('server/config/accounts.js', 'server');
   api.addFiles('server/config/init-db.js', 'server');
-  api.addFiles('server/db/schema/db-perdido.js', 'server');
-  api.addFiles('server/db/schema/db-roles.js', 'server');
+  api.addFiles('server/db/schema/db-categoria.js');
+  api.addFiles('server/db/schema/db-perdido.js');
+  api.addFiles('server/db/schema/db-roles.js');
+  api.addFiles('server/db/query/qry-categoria.js');
   api.addFiles('server/db/query/qry-perdido.js');
   api.addFiles('server/db/query/qry-usuario.js');
+  api.addFiles('server/soa/soa-categoria.js', 'server');
   api.addFiles('server/soa/soa-perdido.js', 'server');
   api.addFiles('server/soa/soa-permissao.js', 'server');
   api.addFiles('server/soa/soa-usuario.js', 'server');
+  api.addFiles('server/publish/pub-categoria.js', 'server');
   api.export([
     'App',
     'appDeclareCollection',

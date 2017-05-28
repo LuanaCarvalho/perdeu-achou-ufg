@@ -3,7 +3,9 @@ Meteor.startup(function () {
 });
 
 initdb = function () {
+  dropCollections();
   initUsuario();
+  initCategoria();
 };
 
 
@@ -13,6 +15,12 @@ Router.route('/resetDB', function () {
   console.log('chegou aqui')
 }, { where: 'server' });
 
+
+dropCollections = function () {
+  Object.keys(appCollections).forEach((c) => {
+    App.db[c].remove({})
+  })
+}
 initUsuario = function () {
   var users = [
     {
@@ -31,4 +39,24 @@ initUsuario = function () {
       App.soa.permissao.adicionar(u._id, ['super']);
     }
   });
+}
+
+initCategoria = function () {
+  const categorias = [
+    {
+      _id: 'categoriaComputadoresId',
+      nome: 'Computadores e periféricos',
+      descricao: 'Notebook, computadores, pendrive e outros periféricos.'
+    },
+    {
+      _id: 'categoriaDispositivosMoveis',
+      nome: 'Dispositivos móveis e periféricos',
+      descricao: 'Smartphones, celulares, tablets, carregador, fone de ouvido e outros periféricos.'
+    },
+  ];
+  categorias.forEach((c) => {
+    const cat = App.query.categoriaPorId(c._id).fetch();
+    if (cat.length == 0)
+      App.soa.categoria.adicionar(c);
+  })
 }

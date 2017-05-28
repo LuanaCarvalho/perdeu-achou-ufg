@@ -5,7 +5,7 @@ appDeclareRoute({
   template: 'login',
   layoutTemplate: 'blankLayout',
   title() {
-    return '';
+    return 'Login';
   }
 });
 
@@ -17,7 +17,7 @@ appDeclareRoute({
   template: 'criarContaUsuario',
   layoutTemplate: 'blankLayout',
   title() {
-    return '';
+    return 'Criar conta';
   }
 });
 appDeclareRoute({
@@ -27,6 +27,6 @@ appDeclareRoute({
   template: 'esqueceuSenha',
   layoutTemplate: 'blankLayout',
   title() {
-    return '';
+    return 'Esqueceu a senha';
   }
 });

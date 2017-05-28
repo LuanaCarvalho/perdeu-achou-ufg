@@ -1,9 +1,9 @@
 appDeclareRoute({
     url: '/',
     search: '/',
-    role: 'public',
+    role: 'default',
     template: 'home',
     title() {
-        return '';
+        return 'Home';
     }
 });
