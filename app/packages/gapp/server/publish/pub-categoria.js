@@ -1,6 +1,6 @@
- Meteor.publish('categoriaList', function () {
-    return App.query.categoriaList();
+ Meteor.publish('categoriaList', function (instituicaoId) {
+    return App.query.categoriaList(instituicaoId);
   });
- Meteor.publish('categoriaPorId', function (categoriaId) {
-    return App.query.categoriaPorId(categoriaId);
+ Meteor.publish('categoriaPorId', function (instituicaoId, categoriaId) {
+    return App.query.categoriaPorId(instituicaoId, categoriaId);
   });

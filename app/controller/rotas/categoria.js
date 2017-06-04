@@ -7,10 +7,10 @@ appDeclareRoute({
         return 'Categoria';
     },
     subscriptions: function () {
-        return Meteor.subscribe('categoriaList');
+        return Meteor.subscribe('categoriaList', 'instUFGSamabaia');
     },
     data() {
-        var categoria = App.query.categoriaList().fetch();
+        var categoria = App.query.categoriaList('instUFGSamabaia').fetch();
         return {
             categoria
         }

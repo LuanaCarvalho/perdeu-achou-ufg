@@ -1,4 +1,4 @@
-appDeclareCollection('perdido', {
+appDeclareCollection('achado', {
   instituicaoId: {
     type: String,
     label: "Institução"
@@ -11,5 +11,13 @@ appDeclareCollection('perdido', {
     type: String,
     label: "Categoria"
   },
+  localId: {
+    type: String,
+    label: "Local encontrado"
+  },
+  contatoId: {
+    type: String,
+    label: "Contato do usuário"
+  }
 })
 
