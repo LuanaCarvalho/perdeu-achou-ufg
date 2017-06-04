@@ -5,7 +5,7 @@ Template.login.events({
     var email = qs('#email').value;
     var password = qs('#password').value
     if (email && password) {
-      Meteor.loginWithPassword(email, password, function (err) {
+      Meteor.loginWithPassword(email, password, function (err) {7
         if (err) {
           swal('Oops...a', 'Ocorreu um erro durante o login, tente novamente.!', 'error');
         }

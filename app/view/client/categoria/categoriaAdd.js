@@ -1,6 +1,5 @@
 Template.categoriaAdd.events({
   'click .adicionar': function (event) {
-    debugger
     var nome = qs('#categoriaNome').value;
     var descricao = qs('#categoriaDescricao').value;
     if (nome && descricao) {
