@@ -20,6 +20,12 @@ var _menu = [
         url: '/categoria',
         roles: 'super'
     },
+    {
+        icon: 'home',
+        name: 'Achados',
+        url: '/achado',
+        roles: 'default'
+    },
 
 ]
 

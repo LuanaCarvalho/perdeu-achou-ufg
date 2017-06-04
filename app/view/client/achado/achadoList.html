@@ -1,20 +1,23 @@
-<template name="categoriaList">
+<template name="achadoList">
   <div class="mdl-grid">
     <ul class="mdl-list mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid ">
-      {{#each categoria}}
-      <li class="categoriaItem mdl-list__item mdl-list__item--three-line demo-background mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-grid ">
+
+      {{#each achado}}
+      <li class="achadoItem mdl-list__item mdl-list__item--three-line demo-background mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-grid ">
         <span class="mdl-list__item-primary-content">
       <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
-      <span>{{nome}}</span>
+      <span>{{descricao}}</span>
         <span class="mdl-list__item-text-body">
-        {{descricao}}
+        {{categoria}}
+        <br>
+        {{local}}
       </span>
         </span>
       </li>
       {{/each}}
     </ul>
   </div>
-  <div class="btnRigth"> 
+  <div class="btnRigth">
     <button class="btnRigth adicionarCategoria mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
     <i class="material-icons">add</i></button>
   </div>

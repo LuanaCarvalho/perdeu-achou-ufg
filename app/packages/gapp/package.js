@@ -19,6 +19,7 @@ Package.onUse(function (api) {
   api.use('accounts-password');
   api.use('accounts-facebook');
   api.use('accounts-google');
+  api.use('reywood:publish-composite');
   api.mainModule('gapp.js');
   api.addFiles('appDeclare.js');
   api.addFiles('client/declare.client.js');
@@ -47,6 +48,7 @@ Package.onUse(function (api) {
   api.addFiles('server/soa/soa-perdido.js', 'server');
   api.addFiles('server/soa/soa-permissao.js', 'server');
   api.addFiles('server/soa/soa-usuario.js', 'server');
+  api.addFiles('server/publish/pub-achado.js', 'server');
   api.addFiles('server/publish/pub-categoria.js', 'server');
   api.addFiles('server/publish/pub-usuario.js', 'server');
   api.export([

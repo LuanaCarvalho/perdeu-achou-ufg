@@ -59,6 +59,12 @@ initCategoria = function () {
       descricao: 'Smartphones, celulares, tablets, carregador, fone de ouvido e outros periféricos.',
       instituicaoId: "instUFGSamabaia"
     },
+    {
+      _id: 'categoriaDocumentosPessoais',
+      nome: 'Documentos pessoais',
+      descricao: 'Documentos pessoais',
+      instituicaoId: "instUFGSamabaia"
+    },
   ];
   categorias.forEach((c) => {
     const cat = App.query.categoriaPorId(c._id).fetch();
@@ -169,6 +175,14 @@ initAchado = function () {
       descricao: 'Fone de ouvido da samsung',
       categoriaId: 'categoriaDispositivosMoveis',
       localId: 'localCAA',
+      contatoId: 'contatoSuperId'
+    },
+    {
+      _id: 'achadoCarteirinhaBibliotecaId',
+      instituicaoId: 'instUFGSamabaia',
+      descricao: 'Fone de ouvido da samsung, com uma bolsinha vermelha e carteirinha da biblioteca',
+      categoriaId: 'categoriaDocumentosPessoais',
+      localId: 'localRUCampus2',
       contatoId: 'contatoSuperId'
     },
   ];

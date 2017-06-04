@@ -1,20 +1,20 @@
 appDeclareQuery({
-  name: 'categoriaList',
-  collection: 'categoria',
+  name: 'achadoList',
+  collection: 'achado',
   // sort: ['nome'],
-  fn: function (achadoId) {
-    return App.db.categoria.find({achadoId});
+  fn: function (instituicaoId) {
+    return App.db.achado.find({instituicaoId});
   }
 });
 appDeclareQuery({
-  name: 'categoriaPorId',
-  collection: 'categoria',
+  name: 'achadoPorId',
+  collection: 'achado',
   // sort: ['nome'],
-  fn: function (achadoId, categoriaId) {
-    return App.db.categoria.find(
+  fn: function (instituicaoId, achadoId) {
+    return App.db.achado.find(
       {
-        _id: categoriaId,
-        achadoId
+        _id: achadoId,
+        instituicaoId
       }
     );
   }

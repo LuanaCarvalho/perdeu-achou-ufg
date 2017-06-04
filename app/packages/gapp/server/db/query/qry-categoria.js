@@ -8,13 +8,13 @@ appDeclareQuery({
 });
 appDeclareQuery({
   name: 'categoriaPorId',
+  debug: true,
   collection: 'categoria',
   // sort: ['nome'],
   fn: function (instituicaoId, categoriaId) {
     return App.db.categoria.find(
       {
         _id: categoriaId,
-        instituicaoId
       }
     );
   }
