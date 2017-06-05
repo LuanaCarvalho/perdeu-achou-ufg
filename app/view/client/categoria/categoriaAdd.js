@@ -3,12 +3,12 @@ Template.categoriaAdd.events({
     var nome = qs('#categoriaNome').value;
     var descricao = qs('#categoriaDescricao').value;
     if (nome && descricao) {
-      Meteor.call('categoria.adicionar', { nome, descricao }, function (err) {
+      Meteor.call('categoria.adicionar', 'instUFGSamabaia', { nome, descricao }, function (err) {
         if (err) {
           swal('Oops...', 'Ocorreu um erro ao adicionar categoria, tente novamente!', 'error');
         } else {
           swal('Ebaa...', 'Categoria foi adicionada com sucesso!', 'success');
-          appRoute('/categoria');
+          return appRoute.back();
         }
       })
     }

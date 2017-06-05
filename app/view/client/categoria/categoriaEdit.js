@@ -4,12 +4,12 @@ Template.categoriaEdit.events({
     var nome = qs('#categoriaNome').value;
     var descricao = qs('#categoriaDescricao').value;
     if (categoriaId && nome && descricao) {
-      Meteor.call('categoria.alterar', categoriaId, { nome, descricao }, function (err) {
+      Meteor.call('categoria.alterar', 'instUFGSamabaia', categoriaId, { nome, descricao }, function (err) {
         if (err) {
           swal('Oops...', 'Ocorreu um erro ao editar categoria, tente novamente!', 'error');
         } else {
           swal('Ebaa...', 'Categoria foi editada com sucesso!', 'success');
-          appRoute('/categoria');
+          return appRoute.back();
         }
       })
     }
@@ -26,12 +26,13 @@ Template.categoriaEdit.events({
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sim, quero excluir!'
       }).then(function () {
-        Meteor.call('categoria.excluir', categoriaId, function (err) {
+        Meteor.call('categoria.excluir', 'instUFGSamabaia', categoriaId, function (err) {
           if (err) {
-            swal('Oops...', 'Ocorreu um erro ao editar categoria, tente novamente!', 'error');
+            swal('Oops...', 'Ocorreu um erro ao excluir categoria, tente novamente!', 'error');
           } else {
             swal('Deletada...', 'Categoria foi deletada com sucesso!', 'success');
-            appRoute('/categoria');
+            return appRoute.back();
+
           }
         })
       })

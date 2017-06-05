@@ -11,26 +11,33 @@ appDeclareRoute({
     Meteor.subscribe('achadoList2', 'instUFGSamabaia');
   },
   data() {
-    debugger
     var achado = App.query.achadoList('instUFGSamabaia').fetch();
     return {
       achado,
-      // categoria
     }
   }
 });
-// appDeclareRoute({
-//     url: '/categoria/adicionar',
-//     search: '/',
-//     role: 'super',
-//     template: 'categoriaAdd',
-//     title() {
-//         return 'Adicionar categoria';
-//     },
-//     data() {
-
-//     }
-// });
+appDeclareRoute({
+  url: '/achado/adicionar',
+  search: '/',
+  role: 'default',
+  template: 'achadoAdd',
+  title() {
+    return 'Adicionar achado';
+  },
+  subscriptions: function () {
+    Meteor.subscribe('achadoList2', 'instUFGSamabaia');
+  },
+  data() {
+    var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
+    var locais = App.query.localList('instUFGSamabaia').fetch();
+    if (categorias && locais)
+      return {
+        categorias,
+        locais
+      };
+  }
+});
 
 
 appDeclareRoute({
@@ -67,7 +74,7 @@ appDeclareRoute({
     var achado = App.query.achadoPorId('instUFGSamabaia', this.params._achadoId).fetch()[0];
     var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
     var locais = App.query.localList('instUFGSamabaia').fetch();
-    if (achado)
+    if (achado && categorias && locais)
       return {
         achado,
         categorias,

@@ -17,8 +17,11 @@ Template.achadoList.helpers({
 
 Template.achadoList.events({
   'click .achadoItem': function (event, template) {
-    debugger
     var self = this;
     appRoute('/achado/' + self._id + '/edit');
-  }
+  },
+  'click .adicionarAdd': function (event, template) {
+    appRoute('/achado/adicionar');
+  },
+
 });

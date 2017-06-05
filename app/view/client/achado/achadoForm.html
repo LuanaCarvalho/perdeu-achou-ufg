@@ -2,7 +2,7 @@
   <form>
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
       <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-        <textarea class="mdl-textfield__input" type="text" rows="3" id="categoriaDescricao" value={{categoria.descricao}}></textarea>
+        <textarea class="mdl-textfield__input" type="text" rows="3" id="categoriaDescricao" value={{achado.descricao}}></textarea>
         <label class="mdl-textfield__label" for="categoriaDescricao">Descrição da achado</label>
       </div>
     </div>
@@ -11,7 +11,7 @@
       <select class="mdl-textfield__input" name="achadoCategoriaId">
       <option></option>
       {{#each categorias}}
-      <option value="{{_id}}">{{nome}}</option>
+      <option value="{{_id}}" {{categoriaSelect}}>{{nome}}</option>
       {{/each}}
     </select>
       <label class="mdl-textfield__label" for="achadoCategoriaId">Categorias</label>
@@ -20,18 +20,20 @@
       <select class="mdl-textfield__input" name="achadoLocalId">
       <option></option>
       {{#each locais}}
-      <option value="{{_id}}">{{nome}}</option>
+      <option value="{{_id}}" {{localSelect}}>{{nome}}</option>
       {{/each}}
     </select>
       <label class="mdl-textfield__label" for="achadoLocalId">Locais</label>
     </div>
-    <div class="mdl-tabs mdl-js-tabs">
+    <!--<div class="mdl-tabs mdl-js-tabs">
       <div class="mdl-tabs__tab-bar">
         <a href="#dadosParaContato" class="mdl-tabs__tab is-active">Dados para contato</a>
       </div>
       <div class="mdl-tabs__panel is-active" id="dadosParaContato">
         {{> contatoEdit}}
       </div>
-    </div>
+    </div>-->
   </form>
 </template>
+
+

@@ -141,6 +141,9 @@ initContato = function () {
     emails: [
       {
         address: 'gislainycrisostomo@gmail.com'
+      },
+      {
+        address: 'gislainy@outlook.com'
       }
     ],
     telefones: [

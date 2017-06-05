@@ -1,17 +1,18 @@
 appDeclareService('achado', {
-  adicionar: function (dados) {
-    console.log(dados)
+  adicionar: function (instituicaoId, dados) {
+    dados.instituicaoId = instituicaoId;
     return App.db.achado.insert(dados);
   },
-  alterar: function (achadoId, dados) {
+  alterar: function (instituicaoId, achadoId, dados) {
     return App.db.achado.update({
-      _id: achadoId
+      _id: achadoId,
+      instituicaoId
     },
       {
         $set: dados
       });
   },
-  excluir: function (achadoId) {
-    return App.db.achado.remove({ _id: achadoId });
+  excluir: function (instituicaoId, achadoId) {
+    return App.db.achado.remove({ _id: achadoId, instituicaoId});
   },
 })
