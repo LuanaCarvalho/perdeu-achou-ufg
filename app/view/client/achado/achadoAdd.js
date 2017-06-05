@@ -1,6 +1,5 @@
 Template.achadoAdd.events({
   'click .adicionar': function (event, template) {
-    debugger
     var descricao = qs('#categoriaDescricao').value;
     var categoriaId = qs('[name="achadoCategoriaId"]').value;
     var localId = qs('[name="achadoLocalId"]').value;

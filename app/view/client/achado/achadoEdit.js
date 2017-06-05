@@ -1,3 +1,17 @@
+Template.achadoEdit.helpers({
+  usuarioAtualEhUsuarioId() {
+    if (this.achado && this.achado.usuarioId == Meteor.userId())
+      return true;
+    else {
+      var achadoId = this.achado && this.achado._id;
+      console.log('/achado/' + achadoId)
+      if (achadoId) {
+        appRoute('/achado/' + achadoId);
+        return false;
+      }
+    }
+  }
+});
 Template.achadoEdit.events({
   'click .salvar': function (event, template) {
     var achadoId = this.achado && this.achado._id;

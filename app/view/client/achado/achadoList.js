@@ -17,8 +17,17 @@ Template.achadoList.helpers({
 
 Template.achadoList.events({
   'click .achadoItem': function (event, template) {
+    debugger
     var self = this;
-    appRoute('/achado/' + self._id + '/edit');
+    if (self && self.usuarioId == Meteor.userId())
+      return appRoute('/achado/' + self._id + '/edit');
+    else {
+      var achadoId = self && self._id;
+      console.log('/achado/' + achadoId)
+      if (achadoId) {
+        appRoute('/achado/' + achadoId);
+      }
+    }
   },
   'click .adicionarAdd': function (event, template) {
     appRoute('/achado/adicionar');

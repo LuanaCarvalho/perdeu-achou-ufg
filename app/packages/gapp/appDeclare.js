@@ -5,7 +5,8 @@ var gApp = {
     query: {},
     soa: {},
     state: {},
-    apptitle: {}
+    apptitle: {},
+    enum: {}
 }
 App = gApp
 appDeclareCollection = function (collection, schema) {
@@ -16,6 +17,37 @@ appDeclareCollection = function (collection, schema) {
     c.attachSchema(appSchemas[collection]);
     return c;
 }
+appDeclareEnum = function (name, def) {
+    var e = App.enum[name] = {
+        values() {
+            var r = [];
+            for (var d in def)
+                r.push(def[d].value);
+            return r;
+        },
+        getDef(val) {
+            for (var d in def)
+                if (def[d].value == val)
+                    return {
+                        name: d,
+                        value: def[d].value,
+                        text: def[d].text
+                    };
+        },
+        getText(val) {
+            for (var d in def)
+                if (def[d].value == val)
+                    return def[d].text;
+        },
+        def() {
+            return def;
+        }
+    };
+    for (var d in def) {
+        e[d] = def[d].value;
+        e[d + '_text'] = def[d].text;
+    }
+};
 
 appDeclareQuery = function (opts) { // name, fn, debug
     if (!opts.name)

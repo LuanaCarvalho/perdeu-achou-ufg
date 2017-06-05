@@ -1,3 +1,18 @@
+appDeclareEnum('redeSocial', {
+  FACEBOOK: {
+    value: 1,
+    name: 'Facebook'
+  },
+  GOOGLE: {
+    value: 2,
+    name: 'Google'
+  },
+  LINKEDIN: {
+    value: 3,
+    name: 'LinkedId'
+  },
+});
+
 appDeclareCollection('contato', {
   usuarioId: {
     type: String,
@@ -51,5 +66,12 @@ appDeclareCollection('contato', {
     label: "Nick da rede social",
     optional: true
   },
+  'redeSocial.$.tipo': {
+    type: String,
+    label: "Qual rede social",
+    // allowedValues: App.enum.redeSocial.values(),
+    optional: true
+  },
 })
 
+// console.log(App.enum.redeSocial.values())

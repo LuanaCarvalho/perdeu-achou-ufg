@@ -1,8 +1,10 @@
 appDeclareService('local', {
-  adicionar: function (dados) {
+  adicionar: function (instituicaoId, dados) {
+    dados.instituicaoId;
     return App.db.local.insert(dados);
   },
-  alterar: function (localId, dados) {
+  alterar: function (instituicaoId, localId, dados) {
+    dados.instituicaoId = instituicaoId;
     return App.db.local.update({
       _id: localId
     },
@@ -10,7 +12,7 @@ appDeclareService('local', {
         $set: dados
       });
   },
-  excluir: function (localId) {
-    return App.db.local.remove({ _id: localId });
+  excluir: function (instituicaoId, localId) {
+    return App.db.local.remove({ _id: localId, instituicaoId });
   },
 })

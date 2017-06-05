@@ -58,7 +58,8 @@ Package.onUse(function (api) {
     'appDeclareService',
     'appDeclareRoute',
     'declareRules',
-    'appRoute'
+    'appRoute',
+    'appDeclareEnum'
   ])
 });
 

@@ -18,3 +18,14 @@ appDeclareQuery({
     );
   }
 });
+appDeclareQuery({
+  name: 'usuarioPorId',
+  collection: 'users',
+  debug: true,
+  /*sort: ['data'],*/
+  fn: function (usuarioId) {
+    return Meteor.users.find({
+      _id: usuarioId
+    });
+  }
+});

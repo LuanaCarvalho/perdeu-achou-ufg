@@ -10,8 +10,8 @@ appDeclareQuery({
   name: 'contatoPorId',
   collection: 'contato',
   // sort: ['nome'],
-  fn: function (instituicaoId, contatoId) {
-    return App.db.contato.find({ _id: contatoId, instituicaoId });
+  fn: function (contatoId) {
+    return App.db.contato.find({ _id: contatoId });
   }
 });
 

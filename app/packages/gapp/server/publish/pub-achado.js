@@ -1,31 +1,58 @@
-Meteor.publish('achadoList', function (instituicaoId) {
-  console.log('instituicaoId 1', instituicaoId)
-  return App.query.achadoList(instituicaoId);
-});
-Meteor.publish('achadoPorId', function (instituicaoId, achadoId) {
-  return App.query.achadoPorId(instituicaoId, achadoId);
-});
-
-
-Meteor.publishComposite('achadoList2', function (instituicaoId) {
+Meteor.publishComposite('achadoList', function (instituicaoId) {
   return {
-    find(instituicaoId) {
-      instituicaoId = 'instUFGSamabaia';
+    find() {
       return App.query.achadoList(instituicaoId);
     },
     children: [
       {
         find(achado) {
-          // console.log('achado', achado)
           return App.query.categoriaPorId(instituicaoId, achado.categoriaId);
 
         }
       },
       {
         find(achado) {
-          // console.log('achado', achado)
           return App.query.localPorId(instituicaoId, achado.localId);
 
+        }
+      },
+    ]
+  }
+});
+
+Meteor.publishComposite('achadoPorId', function (instituicaoId, achadoId) {
+  return {
+    find() {
+      return App.query.achadoPorId(instituicaoId, achadoId);
+    },
+    children: [
+      {
+        find(achado) {
+          return App.query.categoriaPorId(instituicaoId, achado.categoriaId);
+
+        },
+      },
+      {
+        find(achado) {
+          return App.query.localPorId(instituicaoId, achado.localEncontradoId);
+
+        },
+      },
+      {
+        find(achado) {
+          return App.query.localPorId(instituicaoId, achado.localDeixadoId);
+        },
+      },
+      {
+        find(achado) {
+          console.log(achado)
+          console.log(App.query.usuarioPorId(instituicaoId, achado.usuarioId).fetch())
+          return App.query.usuarioPorId(instituicaoId, achado.usuarioId);
+        },
+      },
+      {
+        find(achado) {
+          return App.query.contatoPorId(achado.contatoId);
         }
       },
     ]

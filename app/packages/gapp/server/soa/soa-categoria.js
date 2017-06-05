@@ -1,9 +1,10 @@
 appDeclareService('categoria', {
-  adicionar: function (dados) {
-    console.log(dados)
+  adicionar: function (instituicaoId, dados) {
+    dados.instituicaoId = instituicaoId;
     return App.db.categoria.insert(dados);
   },
-  alterar: function (categoriaId, dados) {
+  alterar: function (instituicaoId, categoriaId, dados) {
+    dados.instituicaoId = instituicaoId;
     return App.db.categoria.update({
       _id: categoriaId
     },
@@ -11,7 +12,7 @@ appDeclareService('categoria', {
         $set: dados
       });
   },
-  excluir: function (categoriaId) {
-    return App.db.categoria.remove({ _id: categoriaId });
+  excluir: function (instituicaoId, categoriaId) {
+    return App.db.categoria.remove({ _id: categoriaId, instituicaoId });
   },
 })

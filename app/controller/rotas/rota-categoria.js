@@ -40,7 +40,7 @@ appDeclareRoute({
         return Meteor.subscribe('categoriaPorId', this.params._categoriaId);
     },
     data() {
-        var categoria = App.query.categoriaPorId(this.params._categoriaId).fetch()[0];
+        var categoria = App.query.categoriaPorId('categoriaPorId', this.params._categoriaId).fetch()[0];
         if (categoria)
             return {
                 categoria

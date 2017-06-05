@@ -11,13 +11,23 @@ appDeclareCollection('achado', {
     type: String,
     label: "Categoria"
   },
-  localId: {
+  localEncontradoId: {
     type: String,
-    label: "Local encontrado"
+    label: "Local encontrado",
+  },
+  localDeixadoId: {
+    type: String,
+    label: "Local encontrado",
+    optional: true
   },
   contatoId: {
     type: String,
-    label: "Contato do usuário"
+    label: "Contato do usuário",
+    optional: true
+  },
+  usuarioId: {
+    type: String,
+    label: "Usuário que adicionou"
   }
 })
 
