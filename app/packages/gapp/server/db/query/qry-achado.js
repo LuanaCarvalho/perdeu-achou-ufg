@@ -1,7 +1,7 @@
 appDeclareQuery({
   name: 'achadoList',
   collection: 'achado',
-  // sort: ['nome'],
+  sort: ['descricao'],
   fn: function (instituicaoId) {
     return App.db.achado.find({instituicaoId});
   }

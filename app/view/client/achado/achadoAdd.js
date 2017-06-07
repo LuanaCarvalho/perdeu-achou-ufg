@@ -2,13 +2,13 @@ Template.achadoAdd.events({
   'click .adicionar': function (event, template) {
     var descricao = qs('#categoriaDescricao').value;
     var categoriaId = qs('[name="achadoCategoriaId"]').value;
-    var localId = qs('[name="achadoLocalId"]').value;
+    var localEncontradoId = qs('[name="achadoLocalId"]').value;
     var contatoId = 'superContatoId';
-    if (descricao && categoriaId && localId) {
+    if (descricao && categoriaId && localEncontradoId) {
       Meteor.call('achado.adicionar', 'instUFGSamabaia', {
         descricao,
         categoriaId,
-        localId,
+        localEncontradoId,
         contatoId
       }, function (err) {
         if (err) {

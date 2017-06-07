@@ -16,7 +16,6 @@ Template.achadoView.helpers({
     return contato && contato.telefones;
   },
   templateRedeSocial() {
-    debugger
     var def = App.enum.redeSocial.getDef(this.tipo);
     return Template['redeSocial_' + def.name];
   }

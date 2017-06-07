@@ -9,7 +9,6 @@ appDeclareQuery({
 appDeclareQuery({
   name: 'localPorId',
   collection: 'local',
-  debug: true,
   // sort: ['nome'],
   fn: function (instituicaoId, localId) {
     return App.db.local.find({ _id: localId, instituicaoId });

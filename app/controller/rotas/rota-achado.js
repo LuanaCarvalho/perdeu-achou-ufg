@@ -54,7 +54,6 @@ appDeclareRoute({
   data() {
     var achado = App.query.achadoPorId('instUFGSamabaia', this.params._achadoId).fetch()[0];
     if (!achado) return;
-    debugger
     var localDeixado = {};
     var contato = App.query.contatoPorId(achado.contatoId).fetch()[0];
     var categoria = App.query.categoriaPorId('instUFGSamabaia', achado.categoriaId).fetch()[0];

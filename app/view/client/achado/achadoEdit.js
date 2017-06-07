@@ -4,9 +4,7 @@ Template.achadoEdit.helpers({
       return true;
     else {
       var achadoId = this.achado && this.achado._id;
-      console.log('/achado/' + achadoId)
       if (achadoId) {
-        appRoute('/achado/' + achadoId);
         return false;
       }
     }
@@ -17,12 +15,12 @@ Template.achadoEdit.events({
     var achadoId = this.achado && this.achado._id;
     var descricao = qs('#categoriaDescricao').value;
     var categoriaId = qs('[name="achadoCategoriaId"]').value;
-    var localId = qs('[name="achadoLocalId"]').value;
-    if (achadoId && descricao && categoriaId && localId) {
+    var localEncontradoId = qs('[name="achadoLocalId"]').value;
+    if (achadoId && descricao && categoriaId && localEncontradoId) {
       Meteor.call('achado.alterar', 'instUFGSamabaia', achadoId, {
         descricao,
         categoriaId,
-        localId
+        localEncontradoId
       }, function (err) {
         if (err) {
           return swal('Oops...', 'Ocorreu um erro inesperado, por favor, tente novamente :)', 'error');

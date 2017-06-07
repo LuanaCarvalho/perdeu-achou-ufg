@@ -137,3 +137,9 @@ appRoute.redirectSite = function (url) {
     Router.go(url);
 };
 
+
+Handlebars.registerHelper('selected', function (key, value) {
+  return (!key && !value) || (key == value) ? {
+    selected: 'selected'
+  } : '';
+});

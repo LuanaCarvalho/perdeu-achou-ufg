@@ -1,12 +1,9 @@
 Template.achadoForm.helpers({
   categoriaSelect() {
-    var self = this;
-    var categoriaId = App.state.router.data && App.state.router.data.achado && App.state.router.data.achado.categoriaId;
-    return self._id === categoriaId ? 'selected' : '';
+    return App.state.router.data && App.state.router.data.achado && App.state.router.data.achado.categoriaId;
+
   },
   localSelect() {
-    var self = this;
-    var localId = App.state.router.data && App.state.router.data.achado && App.state.router.data.achado.localId;
-    return self._id === localId ? 'selected' : '';
+    return App.state.router.data && App.state.router.data.achado && App.state.router.data.achado.localEncontradoId;
   }
 });

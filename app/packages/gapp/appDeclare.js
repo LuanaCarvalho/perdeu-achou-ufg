@@ -129,3 +129,49 @@ function advcursor_sort(originalCursor, sort) {
         }
     };
 }
+
+
+var utils = {
+    sort(array /*, ...fields */) {
+        var args = arguments;
+        if (args.length < 2) throw new Error('sort precisa da lista de campos');
+        array.sort(function (a, b) {
+            for (var i = 1; i < args.length; i++) {
+                var fn = args[i];
+                var decrescente = (fn[0] == '-') ? -1 : 1;
+                if (decrescente === -1) fn = fn.substr(1);
+                var va = utils.getPropByPath(a, fn);
+                var vb = utils.getPropByPath(b, fn);
+                if (typeof va === 'string') va = va.toLowerCase();
+                if (typeof vb === 'string') vb = vb.toLowerCase();
+                if (va instanceof Date) va = va.getTime();
+                if (vb instanceof Date) vb = vb.getTime();
+                if (va < vb) return -1 * decrescente;
+                if (va > vb) return 1 * decrescente;
+            }
+            return 0;
+        });
+    },
+    getPropByPath: function (obj, path, invoke_function, root) {
+        if (!path) return obj;
+        if (typeof obj === 'undefined') return;
+        var i = path.indexOf('.');
+        var v;
+        if (i == -1) {
+            v = obj[path];
+            if (invoke_function !== false && typeof v === 'function')
+                return v.call(root || obj);
+            return v;
+        }
+        else {
+            var prop = path.substr(0, i);
+            path = path.substr(i + 1);
+            v = obj[prop];
+            if (invoke_function !== false && typeof v === 'function')
+                v = v.call(root);
+            return utils.getPropByPath(v, path, invoke_function, root || obj);
+        }
+    },
+}
+
+gApp.utils = utils;

@@ -8,7 +8,7 @@ Template.achadoList.helpers({
   },
   local() {
     var self = this;
-    var local = App.query.localPorId('instUFGSamabaia', this.localId).fetch()[0];
+    var local = App.query.localPorId('instUFGSamabaia', this.localEncontradoId).fetch()[0];
     if (local) {
       return local.nome;
     }
@@ -17,13 +17,11 @@ Template.achadoList.helpers({
 
 Template.achadoList.events({
   'click .achadoItem': function (event, template) {
-    debugger
     var self = this;
     if (self && self.usuarioId == Meteor.userId())
       return appRoute('/achado/' + self._id + '/edit');
     else {
       var achadoId = self && self._id;
-      console.log('/achado/' + achadoId)
       if (achadoId) {
         appRoute('/achado/' + achadoId);
       }

@@ -16,7 +16,6 @@ initdb = function () {
 Router.route('/resetDB', function () {
   initdb();
   this.response.end('reset finalizado');
-  console.log('chegou aqui')
 }, { where: 'server' });
 
 

@@ -12,7 +12,7 @@ Meteor.publishComposite('achadoList', function (instituicaoId) {
       },
       {
         find(achado) {
-          return App.query.localPorId(instituicaoId, achado.localId);
+          return App.query.localPorId(instituicaoId, achado.localEncontradoId);
 
         }
       },
@@ -45,8 +45,6 @@ Meteor.publishComposite('achadoPorId', function (instituicaoId, achadoId) {
       },
       {
         find(achado) {
-          console.log(achado)
-          console.log(App.query.usuarioPorId(instituicaoId, achado.usuarioId).fetch())
           return App.query.usuarioPorId(instituicaoId, achado.usuarioId);
         },
       },

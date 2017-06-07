@@ -1,6 +1,5 @@
 appDeclareService('contato', {
   adicionar: function (dados) {
-    console.log(dados)
     return App.db.contato.insert(dados);
   },
   alterar: function (contatoId, dados) {
