@@ -1,6 +1,11 @@
 <template name="contatoForm">
   <form name="contatoForm">
-    {{> contatoFormComponentesTelefone}}
+    {{#each telefone}}
+      {{> contatoFormComponentesTelefone this}}
+    {{/each}}
+    {{#each email}}
+      {{> contatoFormComponentesEmail this}}
+    {{/each}}
   </form>
 </template>
 

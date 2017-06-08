@@ -1,10 +1,22 @@
 <template name="contatoFormComponentesTelefone">
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid">
     <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" id="telefoneEmail" value={{telefones}}>
+      <input class="mdl-textfield__input" type="text" id="telefone{{index}}" value={{numero}}>
       <label class="mdl-textfield__label" for="telefoneEmail">Telefone</label>
-      <button class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth">
-        <i class="material-icons">mood</i>
+      <button type="button" class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth {{add}}Telefone">
+        <i class="material-icons">{{add}}</i>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template name="contatoFormComponentesEmail">
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid">
+    <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="email{{index}}" value={{address}}>
+      <label class="mdl-textfield__label" for="telefoneEmail">Email </label>
+      <button type="button" class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth {{add}}Email">
+        <i class="material-icons">{{add}}</i>
       </button>
     </div>
   </div>
