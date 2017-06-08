@@ -1,17 +1,6 @@
 <template name="contatoForm">
   <form name="contatoForm">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-      <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="contatoEmail" value={{email}}>
-        <label class="mdl-textfield__label" for="contatoEmail">Email</label>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-      <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="telefoneEmail" value={{telefones}}>
-        <label class="mdl-textfield__label" for="telefoneEmail">Telefone</label>
-      </div>
-    </div>
+    {{> contatoFormComponentesTelefone}}
   </form>
 </template>
 

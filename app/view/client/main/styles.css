@@ -215,3 +215,10 @@ ul.share-buttons .sr-only {
   width: 1px;
   overflow: hidden;
 }
+
+.appCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: wrap;
+}
