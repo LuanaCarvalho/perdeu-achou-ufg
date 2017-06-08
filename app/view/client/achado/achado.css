@@ -3,15 +3,7 @@
   justify-content: flex-end;
   align-items: flex-end;
 }
-
-.mdl-textfield__icon {
-    width: 32px;
-    text-align: center;
+.buttonInputRigth {
     position: absolute;
-    line-height: 1.5;
-}
-
-.mdl-textfield__icon ~ * {
-    margin-left: 48px;
-    width: calc(100% - 48px);
+    right: -25px;
 }
