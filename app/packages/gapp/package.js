@@ -12,6 +12,7 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('1.4.4.2');
   api.use('ecmascript');
+  api.use('ui');
   api.use('aldeed:collection2');
   api.use('mongo');
   api.use('iron:router');

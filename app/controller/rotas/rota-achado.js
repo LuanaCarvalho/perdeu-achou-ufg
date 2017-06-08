@@ -31,7 +31,6 @@ appDeclareRoute({
   data() {
     var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
     var locais = App.query.localList('instUFGSamabaia').fetch();
-    if (categorias && locais)
       return {
         categorias,
         locais
@@ -80,17 +79,16 @@ appDeclareRoute({
     return 'Editando achado';
   },
   subscriptions: function () {
-    Meteor.subscribe('achadoList2', 'instUFGSamabaia');
+    Meteor.subscribe('achadoPorId', 'instUFGSamabaia', this.params._achadoId);
   },
   data() {
     var achado = App.query.achadoPorId('instUFGSamabaia', this.params._achadoId).fetch()[0];
     var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
     var locais = App.query.localList('instUFGSamabaia').fetch();
-    if (achado && categorias && locais)
-      return {
-        achado,
-        categorias,
-        locais
-      };
+    return {
+      achado,
+      categorias,
+      locais
+    };
   }
 });
