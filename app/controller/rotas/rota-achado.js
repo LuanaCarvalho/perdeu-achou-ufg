@@ -26,14 +26,16 @@ appDeclareRoute({
     return 'Adicionando achado';
   },
   subscriptions: function () {
-    Meteor.subscribe('contatoPorUsuarioId', Meteor.userId());
+    Meteor.subscribe('achadoList', 'instUFGSamabaia');
   },
   data() {
+    var contato = App.query.contatoPorUsuarioId(Meteor.userId()).fetch()[0];
     var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
     var locais = App.query.localList('instUFGSamabaia').fetch();
       return {
         categorias,
-        locais
+        locais,
+        contato
       };
   }
 });

@@ -1,30 +1,62 @@
 Template.contatoForm.onCreated(function () {
-	this.telefone = new ReactiveDict();
-	this.telefone.set('telefones', [{
-		numero: '',
-		index: 0,
-		add: true
-	}]);
-	this.email = new ReactiveDict();
-	this.email.set('email', [{
-		address: '',
-		index: 0,
-		add: true
-	}]);
-	this.redeSocial = new ReactiveDict();
-	this.redeSocial.set('redeSocial', [{
-		url: '',
-		nick: '',
-		tipo: '',
-		index: 0,
-		add: true
-	}]);
+	var self = this;
+	self.telefone = new ReactiveDict();
+	self.email = new ReactiveDict();
+	self.redeSocial = new ReactiveDict();
 });
 
+Template.contatoForm.onRendered(function () {
+	var self = this;
+	if (self.data && self.data.contato) {
+		debugger
+		var contato = this.data.contato;
+		var email = contato.emails.map((e, idx) => {
+			e.index = idx;
+			e.add = false;
+			return e;
+		});
+		email[email.length - 1].add = true;
+		self.email.set('email', email);
+		var telefone = contato.telefones.map((e, idx) => {
+			e.index = idx;
+			e.add = false;
+			return e;
+		});
+		telefone[telefone.length - 1].add = true;
+		self.telefone.set('telefones', telefone);
+		var redeSocial = contato.redeSocial.map((e, idx) => {
+			e.index = idx;
+			e.add = false;
+			return e;
+		});
+		redeSocial[redeSocial.length - 1].add = true;
+		self.redeSocial.set('redeSocial', redeSocial);
+	}
+	else {
+		self.telefone.set('telefones', [{
+			numero: '',
+			index: 0,
+			add: true
+		}]);
+		self.email.set('email', [{
+			address: '',
+			index: 0,
+			add: true
+		}]);
+		self.redeSocial.set('redeSocial', [{
+			url: '',
+			nick: '',
+			tipo: '',
+			index: 0,
+			add: true
+		}]);
+	}
 
+});
 
 Template.contatoForm.helpers({
 	telefone: function () {
+		console.log(Template.instance().telefone.get('telefones'))
 		return Template.instance().telefone.get('telefones')
 	},
 	email: function () {

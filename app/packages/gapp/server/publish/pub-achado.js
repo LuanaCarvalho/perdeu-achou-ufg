@@ -23,6 +23,12 @@ Meteor.publishComposite('achadoList', function (instituicaoId) {
 
         }
       },
+      {
+        find(achado) {
+          return App.query.contatoPorUsuarioId(achado.usuarioId);
+
+        }
+      },
     ]
   }
 });

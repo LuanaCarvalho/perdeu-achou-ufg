@@ -142,6 +142,7 @@ appRoute.redirectSite = function (url) {
 
 
 Handlebars.registerHelper('selected', function (key, value) {
+	debugger
 	if ((!key && !value))
 		return {
 			selected: 'false'
