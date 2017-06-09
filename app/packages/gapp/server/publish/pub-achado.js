@@ -32,6 +32,25 @@ Meteor.publishComposite('achadoList', function (instituicaoId) {
     ]
   }
 });
+Meteor.publishComposite('achadoAdd', function (instituicaoId, usuarioId) {
+  return {
+    find() {
+      return App.query.categoriaList(instituicaoId);
+    },
+    children: [
+      {
+        find() {
+          return App.query.localList(instituicaoId);
+        },
+      },
+      {
+        find() {
+          return App.query.contatoPorUsuarioId(usuarioId);
+        },
+      }
+    ]
+  }
+});
 
 Meteor.publishComposite('achadoPorId', function (instituicaoId, achadoId) {
   return {

@@ -23,8 +23,19 @@ Template.achadoAdd.events({
     var categoriaId = qs('[name="achadoCategoriaId"]').value;
     var localEncontradoId = qs('[name="achadoLocalId"]').value;
     var contatoId = localDeixadoId = null;
-    if (template.outroLocal.get())
+    if (template.outroLocal.get()) {
       localDeixadoId = qs('[name="achadoLocalDeixadoId"]').value;
+      if (!localDeixadoId) return swal('Oops...', 'Por favor, escolha um local deixado.', 'error');
+    }
+    else if (Template.instance().estaComigo.get()) {
+      var contato = App.query.contatoPorUsuarioId(Meteor.userId()).fetch()[0];
+      if (contato) contatoId = contato._id;
+      else {
+        return swal('Oops...', 'Por favor, salve as informações de contato :)', 'error');
+      }
+    } else {
+      return swal('Oops...', 'Por favor, preencha as informações de contato. São muito úteis para nós :)', 'error');
+    }
     if (descricao && categoriaId && localEncontradoId) {
       Meteor.call('achado.adicionar', 'instUFGSamabaia', {
         descricao,

@@ -1,6 +1,6 @@
 appDeclareService('contato', {
   adicionar: function (dados) {
-    return App.db.contato.insert(dados);
+    return App.db.contato.upsert({usuarioId: dados.usuarioId}, { $set: dados} );
   },
   alterar: function (contatoId, dados) {
     return App.db.contato.update({

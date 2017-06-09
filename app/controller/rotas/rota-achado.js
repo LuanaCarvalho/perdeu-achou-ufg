@@ -26,9 +26,10 @@ appDeclareRoute({
     return 'Adicionando achado';
   },
   subscriptions: function () {
-    Meteor.subscribe('achadoList', 'instUFGSamabaia');
+    Meteor.subscribe('achadoAdd', 'instUFGSamabaia', Meteor.userId());
   },
   data() {
+    debugger
     var contato = App.query.contatoPorUsuarioId(Meteor.userId()).fetch()[0];
     var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
     var locais = App.query.localList('instUFGSamabaia').fetch();
