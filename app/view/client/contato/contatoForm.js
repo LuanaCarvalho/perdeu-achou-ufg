@@ -37,9 +37,10 @@ Template.contatoForm.helpers({
 
 Template.contatoForm.events({
 	'click .addTelefone': function (event, template) {
+		debugger
 		var telefones = Template.instance().telefone.get('telefones');
 		var ultimoIndex = telefones.length - 1;
-		var numero = qs("#telefoneEmail" + ultimoIndex).value;
+		var numero = qs("#telefone" + ultimoIndex).value;
 		telefones[ultimoIndex] = {
 			numero,
 			index: ultimoIndex,
@@ -54,9 +55,14 @@ Template.contatoForm.events({
 	},
 	'click .deleteTelefone': function (event, template) {
 		var telefones = Template.instance().telefone.get('telefones');
-		telefones.splice(this.index, 1);
 		var ultimoIndex = telefones.length - 1;
-		telefones[ultimoIndex].add = true;
+		var numero = qs("#telefone" + ultimoIndex).value;
+		telefones[ultimoIndex] = {
+			numero,
+			index: ultimoIndex,
+			add: true
+		};
+		telefones.splice(this.index, 1);
 		Template.instance().telefone.set('telefones', telefones);
 	},
 	'click .addEmail': function (event, template) {
@@ -77,9 +83,52 @@ Template.contatoForm.events({
 	},
 	'click .deleteEmail': function (event, template) {
 		var email = Template.instance().email.get('email');
-		email.splice(this.index, 1);
 		var ultimoIndex = email.length - 1;
-		email[ultimoIndex].add = true;
+		var address = qs("#email" + ultimoIndex).value;
+		email[ultimoIndex] = {
+			address,
+			index: ultimoIndex,
+			add: true
+		};
+		email.splice(this.index, 1);
 		Template.instance().email.set('email', email);
+	},
+	'click .addRedeSocial': function (event, template) {
+		var redeSocial = Template.instance().redeSocial.get('redeSocial');
+		var ultimoIndex = redeSocial.length - 1;
+		var url = qs("#redeSocialUrl" + ultimoIndex).value;
+		var tipo = qs("[name=redeSocialTipo" + ultimoIndex + "]").value;
+		var nick = qs("#redeSocialNick" + ultimoIndex).value;
+		redeSocial[ultimoIndex] = {
+			url,
+			tipo,
+			nick,
+			index: ultimoIndex,
+			add: false
+		};
+		redeSocial[ultimoIndex + 1] = {
+			url: '',
+			tipo: '',
+			nick: '',
+			index: ultimoIndex,
+			add: true
+		};
+		Template.instance().redeSocial.set('redeSocial', redeSocial);
+	},
+	'click .deleteRedeSocial': function (event, template) {
+		var redeSocial = Template.instance().redeSocial.get('redeSocial');
+		var ultimoIndex = redeSocial.length - 1;
+		var url = qs("#redeSocialUrl" + ultimoIndex).value;
+		var tipo = qs("[name=redeSocialTipo" + ultimoIndex + "]").value;
+		var nick = qs("#redeSocialNick" + ultimoIndex).value;
+		redeSocial[ultimoIndex] = {
+			url,
+			tipo,
+			nick,
+			index: ultimoIndex,
+			add: true
+		};
+		redeSocial.splice(this.index, 1);
+		Template.instance().redeSocial.set('redeSocial', redeSocial);
 	},
 });

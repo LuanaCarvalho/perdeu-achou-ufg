@@ -61,7 +61,7 @@ Template.achadoAdd.events({
   'click .outroLocal': function (event, template) {
     template.outroLocal.set(true);
   },
-  'click .cancelarContato': function (event, template) {
+  'click .voltarContato': function (event, template) {
     template.outroLocal.set(false);
     template.estaComigo.set(false);
   },

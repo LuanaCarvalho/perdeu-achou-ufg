@@ -2,7 +2,7 @@
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid">
     <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" id="telefone{{index}}" value={{numero}}>
-      <label class="mdl-textfield__label" for="telefoneEmail">Telefone</label>
+      <label class="mdl-textfield__label" for="telefone{{index}}">Telefone</label>
       <button type="button" class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth {{add}}Telefone">
         <i class="material-icons">{{add}}</i>
       </button>
@@ -14,32 +14,37 @@
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid">
     <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" id="email{{index}}" value={{address}}>
-      <label class="mdl-textfield__label" for="telefoneEmail">Email </label>
+      <label class="mdl-textfield__label" for="email{{index}}">Email </label>
       <button type="button" class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth {{add}}Email">
         <i class="material-icons">{{add}}</i>
       </button>
     </div>
   </div>
 </template>
+
+
 <template name="contatoFormComponentesRedeSocial">
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-grid">
-    <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--12-col-phone">
+    <div class=" mdl-cell mdl-cell--2-col mdl-cell--12-col-tablet mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <select class="mdl-textfield__input" name="redeSocialTipo{{index}}">
+      <option></option>
+      {{#each tipoRedeSocial}}
+      <option value="{{value}}" {{selected value tipo}}>{{name}}</option>
+      {{/each}}
+    </select>
+      <label class="mdl-textfield__label" for="tipoRedeSocial">Qual rede social</label>
+    </div>
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="email{{index}}" value={{address}}>
-        <label class="mdl-textfield__label" for="telefoneEmail">Qual rede socail </label>
+        <input class="mdl-textfield__input" type="text" id="redeSocialNick{{index}}" value={{nick}}>
+        <label class="mdl-textfield__label" for="redeSocialNick{{index}}">Seu nick.. @seunick</label>
       </div>
     </div>
-    <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone">
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="email{{index}}" value={{nick}}>
-        <label class="mdl-textfield__label" for="telefoneEmail">Seu nick.. @seunick</label>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone">
-      <div class="mdl-textfield mdl-total mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="email{{index}}" value={{url}}>
-        <label class="mdl-textfield__label" for="telefoneEmail">Link da rede social</label>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth {{add}}Email">
+        <input class="mdl-textfield__input" type="text" id="redeSocialUrl{{index}}" value={{url}}>
+        <label class="mdl-textfield__label" for="redeSocialUrl{{index}}">Link da rede social</label>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--icon buttonInputRigth {{add}}RedeSocial">
         <i class="material-icons">{{add}}</i>
       </button>
       </div>

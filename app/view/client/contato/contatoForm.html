@@ -1,20 +1,18 @@
 <template name="contatoForm">
   <form name="contatoForm">
     <p>Telefone</p>
-    {{#each telefone}}
-      {{> contatoFormComponentesTelefone this}}
-    {{/each}}
+    {{#each telefone}} {{> contatoFormComponentesTelefone this}} {{/each}}
     <hr class="hr-line">
     <p>Email</p>
-    {{#each email}}
-      {{> contatoFormComponentesEmail this}}
-    {{/each}}
+    {{#each email}} {{> contatoFormComponentesEmail this}} {{/each}}
     <hr class="hr-line">
     <p>Rede social</p>
-    {{#each redeSocial}}
-      {{> contatoFormComponentesRedeSocial this}}
-    {{/each}}
+    {{#each redeSocial}} {{> contatoFormComponentesRedeSocial this}} {{/each}}
   </form>
+  <div class="botoesContato">
+    <button class="mdl-button mdl-js-button voltarContato">Voltar</button>
+    <button class="mdl-button mdl-js-button mdl-button--raised salvarContato">Salvar</button>
+  </div>
 </template>
 
 <!--appDeclareCollection('contato', {
