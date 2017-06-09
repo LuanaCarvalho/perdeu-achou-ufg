@@ -11,6 +11,14 @@ Template.contatoForm.onCreated(function () {
 		index: 0,
 		add: true
 	}]);
+	this.redeSocial = new ReactiveDict();
+	this.redeSocial.set('redeSocial', [{
+		url: '',
+		nick: '',
+		tipo: '',
+		index: 0,
+		add: true
+	}]);
 });
 
 
@@ -21,6 +29,9 @@ Template.contatoForm.helpers({
 	},
 	email: function () {
 		return Template.instance().email.get('email')
+	},
+	redeSocial: function () {
+		return Template.instance().redeSocial.get('redeSocial')
 	}
 });
 
@@ -42,11 +53,11 @@ Template.contatoForm.events({
 		Template.instance().telefone.set('telefones', telefones);
 	},
 	'click .deleteTelefone': function (event, template) {
-		var email = Template.instance().telefone.get('email');
-		email.splice(this.index, 1);
-		var ultimoIndex = email.length - 1;
-		email[ultimoIndex].add = true;
-		Template.instance().telefone.set('email', email);
+		var telefones = Template.instance().telefone.get('telefones');
+		telefones.splice(this.index, 1);
+		var ultimoIndex = telefones.length - 1;
+		telefones[ultimoIndex].add = true;
+		Template.instance().telefone.set('telefones', telefones);
 	},
 	'click .addEmail': function (event, template) {
 		var email = Template.instance().email.get('email');

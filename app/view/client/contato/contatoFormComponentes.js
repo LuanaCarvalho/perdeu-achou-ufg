@@ -10,3 +10,9 @@ Template.contatoFormComponentesEmail.helpers({
     return this.add ? 'add' : 'delete';
   },
 });
+
+Template.contatoFormComponentesRedeSocial.helpers({
+  add() {
+    return this.add ? 'add' : 'delete';
+  },
+});
