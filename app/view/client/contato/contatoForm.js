@@ -37,98 +37,180 @@ Template.contatoForm.helpers({
 
 Template.contatoForm.events({
 	'click .addTelefone': function (event, template) {
-		debugger
 		var telefones = Template.instance().telefone.get('telefones');
-		var ultimoIndex = telefones.length - 1;
-		var numero = qs("#telefone" + ultimoIndex).value;
-		telefones[ultimoIndex] = {
-			numero,
-			index: ultimoIndex,
-			add: false
-		};
-		telefones[ultimoIndex + 1] = {
+		var ret = [];
+		telefones.forEach((i) => {
+			var numero = qs("#telefone" + i.index).value || '';
+			ret.push({
+				numero,
+				index: i.index,
+				add: false
+			});
+		});
+		ret.push({
 			numero: '',
-			index: ultimoIndex + 1,
+			index: ret.length,
 			add: true
-		};
-		Template.instance().telefone.set('telefones', telefones);
+		});
+		Template.instance().telefone.set('telefones', ret);
 	},
 	'click .deleteTelefone': function (event, template) {
 		var telefones = Template.instance().telefone.get('telefones');
-		var ultimoIndex = telefones.length - 1;
-		var numero = qs("#telefone" + ultimoIndex).value;
-		telefones[ultimoIndex] = {
-			numero,
-			index: ultimoIndex,
-			add: true
-		};
-		telefones.splice(this.index, 1);
-		Template.instance().telefone.set('telefones', telefones);
+		var ret = [];
+		var self = App.utils.cloneObj(this);
+		var indexClicado = self.index;
+		telefones.filter((i) => {
+			var numero = qs("#telefone" + i.index).value || '';
+			if (indexClicado != i.index)
+				ret.push({
+					numero,
+					index: i.index,
+					add: false
+				});
+		});
+		ret[ret.length - 1].add = true;
+		Template.instance().telefone.set('telefones', ret);
 	},
 	'click .addEmail': function (event, template) {
 		var email = Template.instance().email.get('email');
-		var ultimoIndex = email.length - 1;
-		var address = qs("#email" + ultimoIndex).value;
-		email[ultimoIndex] = {
-			address,
-			index: ultimoIndex,
-			add: false
-		};
-		email[ultimoIndex + 1] = {
+		var ret = [];
+		email.forEach((i) => {
+			var address = qs("#email" + i.index).value || '';
+			ret.push({
+				address,
+				index: i.index,
+				add: false
+			});
+		});
+		ret.push({
 			address: '',
-			index: ultimoIndex + 1,
+			index: ret.length,
 			add: true
-		};
-		Template.instance().email.set('email', email);
+		});
+		Template.instance().email.set('email', ret);
 	},
 	'click .deleteEmail': function (event, template) {
 		var email = Template.instance().email.get('email');
-		var ultimoIndex = email.length - 1;
-		var address = qs("#email" + ultimoIndex).value;
-		email[ultimoIndex] = {
-			address,
-			index: ultimoIndex,
-			add: true
-		};
-		email.splice(this.index, 1);
-		Template.instance().email.set('email', email);
+		var ret = [];
+		var self = App.utils.cloneObj(this);
+		var indexClicado = self.index;
+		email.filter((i) => {
+			var address = qs("#email" + i.index).value || '';
+			if (indexClicado != i.index)
+				ret.push({
+					address,
+					index: i.index,
+					add: false
+				});
+		});
+		ret[ret.length - 1].add = true;
+		Template.instance().email.set('email', ret);
 	},
 	'click .addRedeSocial': function (event, template) {
 		var redeSocial = Template.instance().redeSocial.get('redeSocial');
-		var ultimoIndex = redeSocial.length - 1;
-		var url = qs("#redeSocialUrl" + ultimoIndex).value;
-		var tipo = qs("[name=redeSocialTipo" + ultimoIndex + "]").value;
-		var nick = qs("#redeSocialNick" + ultimoIndex).value;
-		redeSocial[ultimoIndex] = {
-			url,
-			tipo,
-			nick,
-			index: ultimoIndex,
-			add: false
-		};
-		redeSocial[ultimoIndex + 1] = {
+		var ret = [];
+		redeSocial.forEach((i) => {
+			var url = qs("#redeSocialUrl" + i.index).value;
+			var tipo = qs("[name=redeSocialTipo" + i.index + "]").value;
+			var nick = qs("#redeSocialNick" + i.index).value;
+			var address = qs("#email" + i.index).value || '';
+			ret.push({
+				url,
+				tipo,
+				nick,
+				index: i.index,
+				add: false
+			});
+		});
+		ret.push({
 			url: '',
 			tipo: '',
 			nick: '',
-			index: ultimoIndex,
+			index: ret.length,
 			add: true
-		};
-		Template.instance().redeSocial.set('redeSocial', redeSocial);
+		});
+		Template.instance().redeSocial.set('redeSocial', ret);
 	},
 	'click .deleteRedeSocial': function (event, template) {
 		var redeSocial = Template.instance().redeSocial.get('redeSocial');
-		var ultimoIndex = redeSocial.length - 1;
-		var url = qs("#redeSocialUrl" + ultimoIndex).value;
-		var tipo = qs("[name=redeSocialTipo" + ultimoIndex + "]").value;
-		var nick = qs("#redeSocialNick" + ultimoIndex).value;
-		redeSocial[ultimoIndex] = {
+		var ret = [];
+		var self = App.utils.cloneObj(this);
+		var indexClicado = self.index;
+		redeSocial.filter((i) => {
+			var url = qs("#redeSocialUrl" + i.index).value;
+			var tipo = qs("[name=redeSocialTipo" + i.index + "]").value;
+			var nick = qs("#redeSocialNick" + i.index).value;
+			var address = qs("#email" + i.index).value || '';
+			if (indexClicado != i.index)
+				ret.push({
+					url,
+					tipo,
+					nick,
+					index: i.index,
+					add: false
+				});
+		});
+		ret[ret.length - 1].add = true;
+		Template.instance().redeSocial.set('redeSocial', ret);
+	},
+	'click .salvarContato': function (event, template) {
+		var redeSocial = Template.instance().redeSocial.get('redeSocial');
+		redeSocial = getRedeSocial(redeSocial);
+		var telefones = Template.instance().telefone.get('telefones');
+		telefones = getTelefone(telefones);
+		var emails = Template.instance().email.get('email');
+		emails = getEmail(emails);
+		var usuarioId = Meteor.userId();
+		Meteor.call('contato.adicionar', {
+			redeSocial,
+			telefones,
+			emails,
+			usuarioId
+		}, function (err) {
+			if (err) {
+				return swal('Oops...', 'Ocorreu um erro inesperado, por favor, tente novamente :)' + err.stack || err.error, 'error');
+
+			} else {
+				swal('Ebaaa...', 'Seu contato foi cadastro com sucesso :)', 'success');
+			}
+		});
+	}
+});
+
+
+function getEmail(email) {
+	var email = Template.instance().email.get('email');
+	var ret = [];
+	email.forEach((i) => {
+		var address = qs("#email" + i.index).value || '';
+		ret.push({
+			address,
+		});
+	});
+	return ret;
+}
+function getTelefone(telefones) {
+	var ret = [];
+	telefones.forEach((i) => {
+		var numero = qs("#telefone" + i.index).value || '';
+		ret.push({
+			numero,
+		});
+	});
+	return ret;
+};
+function getRedeSocial(redeSocial) {
+	var ret = [];
+	redeSocial.forEach((i) => {
+		var url = qs("#redeSocialUrl" + i.index).value;
+		var tipo = qs("[name=redeSocialTipo" + i.index + "]").value;
+		var nick = qs("#redeSocialNick" + i.index).value;
+		var address = qs("#email" + i.index).value || '';
+		ret.push({
 			url,
 			tipo,
 			nick,
-			index: ultimoIndex,
-			add: true
-		};
-		redeSocial.splice(this.index, 1);
-		Template.instance().redeSocial.set('redeSocial', redeSocial);
-	},
-});
+		});
+	});
+	return ret;
+}

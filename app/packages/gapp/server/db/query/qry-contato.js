@@ -15,3 +15,12 @@ appDeclareQuery({
   }
 });
 
+appDeclareQuery({
+  name: 'contatoPorUsuarioId',
+  collection: 'contato',
+  // sort: ['nome'],
+  fn: function (usuarioId) {
+    return App.db.contato.find({ usuarioId });
+  }
+});
+

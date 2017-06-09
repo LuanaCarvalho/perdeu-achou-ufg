@@ -16,7 +16,7 @@ appDeclareEnum('redeSocial', {
 appDeclareCollection('contato', {
   usuarioId: {
     type: String,
-    label: "Institução"
+    label: "Usuario"
   },
   emails: {
     type: Array,

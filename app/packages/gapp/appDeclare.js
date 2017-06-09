@@ -172,6 +172,23 @@ var utils = {
             return utils.getPropByPath(v, path, invoke_function, root || obj);
         }
     },
+    cloneObj(obj) {
+        if (typeof obj === 'undefined') return undefined;
+        if (obj === null) return null;
+        if (Array.isArray(obj))
+            return obj.map(utils.cloneObj);
+        if (typeof obj === 'function')
+            return obj;
+        if (typeof obj !== 'object')
+            return obj;
+        if (obj instanceof Date)
+            return new Date(obj);
+        var n = {};
+        Object.keys(obj).forEach(function (prop) {
+            n[prop] = utils.cloneObj(obj[prop]);
+        });
+        return n;
+    },
 }
 
 gApp.utils = utils;

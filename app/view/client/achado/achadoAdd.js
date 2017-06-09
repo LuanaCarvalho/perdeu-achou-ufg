@@ -40,7 +40,6 @@ Template.achadoAdd.events({
           swal('Ebaaa...', 'Seu achado foi cadastro com sucesso :)', 'success');
           return appRoute.back();
         }
-
       });
     } else {
       if (!descricao)
