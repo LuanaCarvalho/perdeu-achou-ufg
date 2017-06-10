@@ -1,0 +1,39 @@
+<template name="perdidoEdit">
+  {{#if usuarioAtualEhUsuarioId}}
+  <div class="demo-cards mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+      <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+        <h2 class="mdl-card__title-text">Dados do perdido</h2>
+      </div>
+      <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+        {{>perdidoForm this}}
+        <hr class="hr-line">
+        <h3> Informações de contato </h3>
+        {{#if naoSelecionadoOpcao}}
+          <p> O objeto está com você ou foi deixado em algum local?</p>
+          <div class="appCenter">
+            <button class="mdl-button mdl-js-button mdl-button--primary estaComigo">Comigo</button>
+            <button class="mdl-button mdl-js-button mdl-button--accent outroLocal">Outro local</button>
+          </div>
+        {{/if}}
+        {{#if estaComigo}}
+          <div class="contatoUser">
+            {{> contatoUser this}} 
+          </div>
+        {{/if}}
+        {{#if outroLocal}}
+          <div class="contatoUser">
+            {{> contatoOutroLocal this}} 
+          </div>
+        {{/if}}
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored salvar">Salvar</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent excluir">Excluir</button>
+        <button class="mdl-button mdl-js-button cancelar">Cancelar</button>
+      </div>
+    </div>
+    <div class="demo-separator mdl-cell--1-col"></div>
+  </div>
+  {{/if}}
+</template>

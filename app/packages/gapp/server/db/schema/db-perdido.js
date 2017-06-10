@@ -11,5 +11,23 @@ appDeclareCollection('perdido', {
     type: String,
     label: "Categoria"
   },
+  localEncontradoId: {
+    type: String,
+    label: "Local encontrado",
+  },
+  localDeixadoId: {
+    type: String,
+    label: "Local encontrado",
+    optional: true
+  },
+  contatoId: {
+    type: String,
+    label: "Contato do usuário",
+    optional: true
+  },
+  usuarioId: {
+    type: String,
+    label: "Usuário que adicionou"
+  }
 })
 

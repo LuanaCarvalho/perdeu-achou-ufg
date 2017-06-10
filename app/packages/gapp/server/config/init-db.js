@@ -10,6 +10,7 @@ initdb = function () {
   initContato();
   initCategoria();
   initAchado();
+  initPerdido();
 };
 
 
@@ -236,5 +237,43 @@ initAchado = function () {
   ];
   achado.forEach((a) => {
     App.soa.achado.adicionar(a.instituicaoId, a);
+  })
+}
+initPerdido  = function () {
+  var usuarioSuper = App.query.usuarioPorEmail('gislainycrisostomo@gmail.com').fetch()[0] || {};
+  var usuarioSuperId = usuarioSuper && usuarioSuper._id;
+  var usuarioDefault = App.query.usuarioPorEmail('gislainy@outlook.com').fetch()[0] || {};
+  var usuarioDefaultId = usuarioDefault && usuarioDefault._id;
+  var perdido = [
+    {
+      _id: 'perdidoPenDriveId',
+      instituicaoId: 'instUFGSamabaia',
+      descricao: 'Pendrive da SanDisk vermelho',
+      categoriaId: 'categoriaComputadoresId',
+      localEncontradoId: 'localINF',
+      contatoId: 'contatoSuperId',
+      usuarioId: usuarioSuperId
+    },
+    {
+      _id: 'perdidoFoneOuvidoId',
+      instituicaoId: 'instUFGSamabaia',
+      descricao: 'Fone de ouvido da samsung',
+      categoriaId: 'categoriaDispositivosMoveis',
+      localEncontradoId: 'localCAA',
+      localDeixadoId: 'localCAA',
+      usuarioId: usuarioDefaultId
+    },
+    {
+      _id: 'perdidoCarteirinhaBibliotecaId',
+      instituicaoId: 'instUFGSamabaia',
+      descricao: 'Fone de ouvido da samsung, com uma bolsinha vermelha e carteirinha da biblioteca',
+      categoriaId: 'categoriaDocumentosPessoais',
+      localEncontradoId: 'localRUCampus2',
+      contatoId: 'contatoDefaultId',
+      usuarioId: usuarioDefaultId
+    },
+  ];
+  perdido.forEach((a) => {
+    App.soa.perdido.adicionar(a.instituicaoId, a);
   })
 }

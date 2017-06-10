@@ -1,0 +1,9 @@
+.botoesContato {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.buttonInputRigth {
+    position: absolute;
+    right: -25px;
+}

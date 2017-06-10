@@ -50,6 +50,7 @@ Package.onUse(function (api) {
   api.addFiles('server/soa/soa-permissao.js', 'server');
   api.addFiles('server/soa/soa-usuario.js', 'server');
   api.addFiles('server/publish/pub-achado.js', 'server');
+  api.addFiles('server/publish/pub-perdido.js', 'server');
   api.addFiles('server/publish/pub-categoria.js', 'server');
   api.addFiles('server/publish/pub-usuario.js', 'server');
   api.export([

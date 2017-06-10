@@ -26,6 +26,12 @@ var _menu = [
         url: '/achado',
         roles: 'default'
     },
+    {
+        icon: 'home',
+        name: 'Perdidos',
+        url: '/perdido',
+        roles: 'default'
+    },
 
 ]
 
