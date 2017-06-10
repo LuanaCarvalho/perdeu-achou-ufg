@@ -24,7 +24,7 @@ Template.perdidoAdd.events({
     var localEncontradoId = qs('[name="perdidoLocalId"]').value;
     var contatoId = localDeixadoId = null;
     if (template.outroLocal.get()) {
-      localDeixadoId = qs('[name="perdidoLocalDeixadoId"]').value;
+      localDeixadoId = qs('[name="localDeixadoId"]').value;
       if (!localDeixadoId) return swal('Oops...', 'Por favor, escolha um local deixado.', 'error');
     }
     else if (Template.instance().estaComigo.get()) {

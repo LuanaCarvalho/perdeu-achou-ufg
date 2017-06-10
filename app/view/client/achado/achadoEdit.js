@@ -41,7 +41,7 @@ Template.achadoEdit.events({
     var localEncontradoId = qs('[name="achadoLocalId"]').value;
     var contatoId = localDeixadoId = null;
     if (template.outroLocal.get()) {
-      localDeixadoId = qs('[name="achadoLocalDeixadoId"]').value;
+      localDeixadoId = qs('[name="localDeixadoId"]').value;
       if (!localDeixadoId) return swal('Oops...', 'Por favor, escolha um local deixado.', 'error');
     }
     else if (Template.instance().estaComigo.get()) {
