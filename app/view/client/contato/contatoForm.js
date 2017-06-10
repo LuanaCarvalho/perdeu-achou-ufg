@@ -8,7 +8,6 @@ Template.contatoForm.onCreated(function () {
 Template.contatoForm.onRendered(function () {
 	var self = this;
 	if (self.data && self.data.contato) {
-		debugger
 		var contato = this.data.contato;
 		var email = contato.emails.map((e, idx) => {
 			e.index = idx;
@@ -56,7 +55,6 @@ Template.contatoForm.onRendered(function () {
 
 Template.contatoForm.helpers({
 	telefone: function () {
-		console.log(Template.instance().telefone.get('telefones'))
 		return Template.instance().telefone.get('telefones')
 	},
 	email: function () {

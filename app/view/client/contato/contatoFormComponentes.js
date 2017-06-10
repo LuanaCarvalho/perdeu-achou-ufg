@@ -24,7 +24,6 @@ Template.contatoFormComponentesRedeSocial.helpers({
     return ret;
   },
   tipo() {
-    debugger
     return Template.instance().data.tipo
   }
 });

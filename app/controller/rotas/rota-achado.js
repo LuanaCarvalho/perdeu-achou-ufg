@@ -29,15 +29,14 @@ appDeclareRoute({
     Meteor.subscribe('achadoAdd', 'instUFGSamabaia', Meteor.userId());
   },
   data() {
-    debugger
     var contato = App.query.contatoPorUsuarioId(Meteor.userId()).fetch()[0];
     var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
     var locais = App.query.localList('instUFGSamabaia').fetch();
-      return {
-        categorias,
-        locais,
-        contato
-      };
+    return {
+      categorias,
+      locais,
+      contato
+    };
   }
 });
 
@@ -56,6 +55,7 @@ appDeclareRoute({
   data() {
     var achado = App.query.achadoPorId('instUFGSamabaia', this.params._achadoId).fetch()[0];
     if (!achado) return;
+    debugger
     var localDeixado = {};
     var contato = App.query.contatoPorId(achado.contatoId).fetch()[0];
     var categoria = App.query.categoriaPorId('instUFGSamabaia', achado.categoriaId).fetch()[0];
@@ -86,12 +86,26 @@ appDeclareRoute({
   },
   data() {
     var achado = App.query.achadoPorId('instUFGSamabaia', this.params._achadoId).fetch()[0];
-    var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
-    var locais = App.query.localList('instUFGSamabaia').fetch();
-    return {
-      achado,
-      categorias,
-      locais
-    };
+    if (achado) {
+      var localDeixado = {};
+      var contato = App.query.contatoPorId(achado.contatoId).fetch()[0];
+      var categoria = App.query.categoriaPorId('instUFGSamabaia', achado.categoriaId).fetch()[0];
+      var localEncontrado = App.query.localPorId('instUFGSamabaia', achado.localEncontradoId).fetch()[0];
+      if (achado.localDeixadoId)
+        localDeixado = App.query.localPorId('instUFGSamabaia', achado.localDeixadoId).fetch()[0];
+      var usuario = App.query.usuarioPorId(achado.usuarioId).fetch()[0];
+      var categorias = App.query.categoriaList('instUFGSamabaia').fetch();
+      var locais = App.query.localList('instUFGSamabaia').fetch();
+      return {
+        achado,
+        contato,
+        usuario,
+        localEncontrado,
+        localDeixado,
+        categoria,
+        categorias,
+        locais,
+      };
+    }
   }
 });

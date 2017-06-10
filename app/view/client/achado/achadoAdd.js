@@ -1,6 +1,6 @@
 
 Template.achadoAdd.onCreated(function () {
-  this.estaComigo = new ReactiveVar(true);
+  this.estaComigo = new ReactiveVar(false);
   this.outroLocal = new ReactiveVar(false);
 });
 

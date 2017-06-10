@@ -35,6 +35,16 @@ initUsuario = function () {
       email: 'gislainy@outlook.com',
       password: '123',
       roles: ['default']
+    },
+    {
+      email: 'pabllo@teste.com',
+      password: '123',
+      roles: ['default']
+    },
+    {
+      email: 'luana@teste.com',
+      password: '123',
+      roles: ['default']
     }
   ];
   users.forEach((user) => {
@@ -146,7 +156,7 @@ initContato = function () {
       usuarioId: usuarioIdSuper,
       emails: [
         {
-          address: 'gislainy@outlook.com'
+          address: 'gislainycrisostomo@outlook.com'
         }
       ],
       telefones: [
