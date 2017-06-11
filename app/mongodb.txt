@@ -1,0 +1,9 @@
+mongodb://master:G2689!123y@ds121222.mlab.com:21222/perdeu-achou
+
+
+meteor-now -e ROOT_URL=http://perdeu-achou.com -e MONGO_URL=mongodb://master:masterapp@ds121222.mlab.com:21222/perdeu-achou
+
+
+
+
+

@@ -3,7 +3,7 @@ Meteor.startup(function () {
 });
 
 initdb = function () {
-  dropCollections();
+  // dropCollections();
   initInstituicao();
   initLocal();
   initUsuario();
@@ -14,10 +14,52 @@ initdb = function () {
 };
 
 
-Router.route('/resetDB', function () {
+Router.route('/resetDB/all', function () {
   initdb();
   this.response.end('reset finalizado');
 }, { where: 'server' });
+
+
+// Router.route('/resetDB/drop', function () {
+//   dropCollections();
+//   this.response.end('drop nas coleções');
+// }, { where: 'server' });
+
+Router.route('/resetDB/instituicao', function () {
+  initInstituicao();
+  this.response.end('insert instituicao');
+}, { where: 'server' });
+
+Router.route('/resetDB/local', function () {
+  initLocal();
+  this.response.end('insert local');
+}, { where: 'server' });
+
+Router.route('/resetDB/contato', function () {
+  initContato();
+  this.response.end('insert contato');
+}, { where: 'server' });
+
+Router.route('/resetDB/categoria', function () {
+  initCategoria();
+  this.response.end('insert categoria');
+}, { where: 'server' });
+
+Router.route('/resetDB/achado', function () {
+  initAchado();
+  this.response.end('insert achado');
+}, { where: 'server' });
+
+
+Router.route('/resetDB/perdido', function () {
+  initPerdido();
+  this.response.end('insert perdido');
+}, { where: 'server' });
+
+
+
+
+
 
 
 dropCollections = function () {
@@ -49,15 +91,13 @@ initUsuario = function () {
     }
   ];
   users.forEach((user) => {
-    var u = Meteor.users.findOne({
+    var u = Meteor.users.remove({
       "emails.address": user.email
     });
-    if (u == null) {
-      var userId = App.soa.usuario.criarConta(user.email, user.password);
-      App.soa.permissao.adicionar(userId, user.roles);
-    } else {
-      App.soa.permissao.adicionar(u._id, user.roles);
-    }
+    App.soa.usuario.criarConta(user.email, user.password);
+    var userAdd = App.query.usuarioPorEmail(user.email).fetch()[0] || {};
+    App.soa.permissao.adicionar(userAdd._id, user.roles);
+
   });
 }
 
@@ -83,6 +123,7 @@ initCategoria = function () {
     },
   ];
   categorias.forEach((c) => {
+    App.soa.categoria.excluir(c.instituicaoId, c._id);
     App.soa.categoria.adicionar(c.instituicaoId, c);
   })
 }
@@ -99,6 +140,7 @@ initInstituicao = function () {
     },
   ];
   instituicao.forEach((i) => {
+    App.soa.instituicao.excluir(i._id);
     App.soa.instituicao.adicionar(i);
   });
 }
@@ -142,6 +184,7 @@ initLocal = function () {
     },
   ];
   local.forEach((l) => {
+    App.soa.local.excluir(l.instituicaoId, l._id);
     App.soa.local.adicionar(l.instituicaoId, l);
   })
 }
@@ -157,7 +200,7 @@ initContato = function () {
       usuarioId: usuarioIdSuper,
       emails: [
         {
-          address: 'gislainycrisostomo@outlook.com'
+          address: 'gislainycrisostomo@gmail.com'
         }
       ],
       telefones: [
@@ -196,6 +239,7 @@ initContato = function () {
     },
   ];
   contato.forEach((c) => {
+    App.soa.contato.excluir(c._id);
     App.soa.contato.adicionar(c);
   })
 }
@@ -236,10 +280,11 @@ initAchado = function () {
     },
   ];
   achado.forEach((a) => {
+    App.soa.achado.excluir(a.instituicaoId, a._id);
     App.soa.achado.adicionar(a.instituicaoId, a);
   })
 }
-initPerdido  = function () {
+initPerdido = function () {
   var usuarioSuper = App.query.usuarioPorEmail('gislainycrisostomo@gmail.com').fetch()[0] || {};
   var usuarioSuperId = usuarioSuper && usuarioSuper._id;
   var usuarioDefault = App.query.usuarioPorEmail('gislainy@outlook.com').fetch()[0] || {};
@@ -250,7 +295,7 @@ initPerdido  = function () {
       instituicaoId: 'instUFGSamabaia',
       descricao: 'Pendrive da SanDisk vermelho',
       categoriaId: 'categoriaComputadoresId',
-      localEncontradoId: 'localINF',
+      localPerdidoId: 'localINF',
       contatoId: 'contatoSuperId',
       usuarioId: usuarioSuperId
     },
@@ -259,8 +304,7 @@ initPerdido  = function () {
       instituicaoId: 'instUFGSamabaia',
       descricao: 'Fone de ouvido da samsung',
       categoriaId: 'categoriaDispositivosMoveis',
-      localEncontradoId: 'localCAA',
-      localDeixadoId: 'localCAA',
+      localPerdidoId: 'localCAA',
       usuarioId: usuarioDefaultId
     },
     {
@@ -268,12 +312,13 @@ initPerdido  = function () {
       instituicaoId: 'instUFGSamabaia',
       descricao: 'Fone de ouvido da samsung, com uma bolsinha vermelha e carteirinha da biblioteca',
       categoriaId: 'categoriaDocumentosPessoais',
-      localEncontradoId: 'localRUCampus2',
+      localPerdidoId: 'localRUCampus2',
       contatoId: 'contatoDefaultId',
       usuarioId: usuarioDefaultId
     },
   ];
   perdido.forEach((a) => {
+    App.soa.perdido.excluir(a.instituicaoId, a._id);
     App.soa.perdido.adicionar(a.instituicaoId, a);
   })
 }

@@ -3,6 +3,7 @@ var _destacarPermissoes = {};
 
 appDeclareService('permissao', {
   adicionar: function (userId, permissoes) {
+    console.log(userId)
     return Roles.addUsersToRoles(userId, permissoes);
   },
   _declarar: function (role, subroles, acrescentarPermissoes, destaque) {

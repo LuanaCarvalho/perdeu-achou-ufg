@@ -4,6 +4,6 @@ Template.perdidoForm.helpers({
 
   },
   localSelect() {
-    return App.state.router.data && App.state.router.data.perdido && App.state.router.data.perdido.localEncontradoId;
+    return App.state.router.data && App.state.router.data.perdido && App.state.router.data.perdido.localPerdidoId;
   }
 });

@@ -8,7 +8,7 @@ Template.perdidoList.helpers({
   },
   local() {
     var self = this;
-    var local = App.query.localPorId('instUFGSamabaia', this.localEncontradoId).fetch()[0];
+    var local = App.query.localPorId('instUFGSamabaia', this.localPerdidoId).fetch()[0];
     if (local) {
       return local.nome;
     }

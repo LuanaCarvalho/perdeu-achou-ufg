@@ -9,23 +9,7 @@
         {{>perdidoForm this}}
         <hr class="hr-line">
         <h3> Informações de contato </h3>
-        {{#if naoSelecionadoOpcao}}
-          <p> O objeto está com você ou foi deixado em algum local?</p>
-          <div class="appCenter">
-            <button class="mdl-button mdl-js-button mdl-button--primary estaComigo">Comigo</button>
-            <button class="mdl-button mdl-js-button mdl-button--accent outroLocal">Outro local</button>
-          </div>
-        {{/if}}
-        {{#if estaComigo}}
-          <div class="contatoUser">
-            {{> contatoUser this}} 
-          </div>
-        {{/if}}
-        {{#if outroLocal}}
-          <div class="contatoUser">
-            {{> contatoOutroLocal this}} 
-          </div>
-        {{/if}}
+        {{> contatoUser this}}
       </div>
       <div class="mdl-card__actions mdl-card--border">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored salvar">Salvar</button>

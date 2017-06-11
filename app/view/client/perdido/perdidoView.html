@@ -7,14 +7,10 @@
       <div class="mdl-card__supporting-text mdl-color-text--grey-600">
         <p><strong>Descrição: </strong>{{perdido.descricao}} </p>
         <p><strong>Categoria: </strong>{{categoria.nome}} </p>
-        <p><strong>Local encontrado: </strong>{{localEncontrado.nome}} </p>
+        <p><strong>Local encontrado: </strong>{{localPerdido.nome}} </p>
         <hr class="hr-line">
         <h5> Informações de contato </h5>
-        {{#if perdido.localDeixadoId}}
-        <p>Seu objeto foi deixado nesse local: <strong>{{localDeixado.nome}}</strong>. Para mais informações, comparace nesse
-          local.</p>
-        {{else}}
-        <p>O usuário <strong>{{nomeUsuario}} </strong> encontrou esse objeto. Você pode entrar em contato com ele atráves de:
+        <p>O usuário <strong>{{nomeUsuario}} </strong> perdeu esse objeto. Você pode entrar em contato com ele atráves de:
           </p>
         <p> {{#each emails}} E-mail: <strong> {{address}} </strong> <br> {{/each}}
         </p>
@@ -28,7 +24,7 @@
           </ul>
           {{/each}}
         </p>
-        {{/if}} {{/if}}
+        {{/if}}
       </div>
       <div class="mdl-card__actions mdl-card--border">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored cancelar">Ok</button>

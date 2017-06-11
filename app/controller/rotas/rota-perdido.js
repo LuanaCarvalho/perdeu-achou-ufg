@@ -59,7 +59,7 @@ appDeclareRoute({
     var localDeixado = {};
     var contato = App.query.contatoPorId(perdido.contatoId).fetch()[0];
     var categoria = App.query.categoriaPorId('instUFGSamabaia', perdido.categoriaId).fetch()[0];
-    var localEncontrado = App.query.localPorId('instUFGSamabaia', perdido.localEncontradoId).fetch()[0];
+    var localPerdido = App.query.localPorId('instUFGSamabaia', perdido.localPerdidoId).fetch()[0];
     if (perdido.localDeixadoId)
       localDeixado = App.query.localPorId('instUFGSamabaia', perdido.localDeixadoId).fetch()[0];
     var usuario = App.query.usuarioPorId(perdido.usuarioId).fetch()[0];
@@ -67,7 +67,7 @@ appDeclareRoute({
       perdido,
       contato,
       usuario,
-      localEncontrado,
+      localPerdido,
       localDeixado,
       categoria
     };
@@ -90,7 +90,7 @@ appDeclareRoute({
       var localDeixado = {};
       var contato = App.query.contatoPorId(perdido.contatoId).fetch()[0];
       var categoria = App.query.categoriaPorId('instUFGSamabaia', perdido.categoriaId).fetch()[0];
-      var localEncontrado = App.query.localPorId('instUFGSamabaia', perdido.localEncontradoId).fetch()[0];
+      var localPerdido = App.query.localPorId('instUFGSamabaia', perdido.localPerdidoId).fetch()[0];
       if (perdido.localDeixadoId)
         localDeixado = App.query.localPorId('instUFGSamabaia', perdido.localDeixadoId).fetch()[0];
       var usuario = App.query.usuarioPorId(perdido.usuarioId).fetch()[0];
@@ -100,7 +100,7 @@ appDeclareRoute({
         perdido,
         contato,
         usuario,
-        localEncontrado,
+        localPerdido,
         localDeixado,
         categoria,
         categorias,
