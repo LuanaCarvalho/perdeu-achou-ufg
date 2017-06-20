@@ -24,5 +24,6 @@ Template.perdidoView.helpers({
 Template.perdidoView.events({
   'click .cancelar': function (event, template) {
     appRoute.back();
-  }
+  },
+  
 });

@@ -67,9 +67,9 @@ appDeclareCollection('contato', {
     optional: true
   },
   'redeSocial.$.tipo': {
-    type: String,
+    type: Number,
     label: "Qual rede social",
-    // allowedValues: App.enum.redeSocial.values,
+    allowedValues: App.enum.redeSocial.values,
     optional: true
   },
 })

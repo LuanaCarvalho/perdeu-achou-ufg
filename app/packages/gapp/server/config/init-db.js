@@ -56,10 +56,10 @@ Router.route('/resetDB/perdido', function () {
   this.response.end('insert perdido');
 }, { where: 'server' });
 
-
-
-
-
+Router.route('/resetDB/usuario', function () {
+  initUsuario();
+  this.response.end('insert usuario');
+}, { where: 'server' });
 
 
 dropCollections = function () {

@@ -21,15 +21,27 @@ var _menu = [
         roles: 'super'
     },
     {
-        icon: 'home',
+        icon: 'stars',
         name: 'Achados',
         url: '/achado',
         roles: 'default'
     },
     {
-        icon: 'home',
+        icon: 'error',
         name: 'Perdidos',
         url: '/perdido',
+        roles: 'default'
+    },
+    {
+        icon: 'stars',
+        name: 'Meus perdidos',
+        url: '/meusperdidos',
+        roles: 'default'
+    },
+    {
+        icon: 'error',
+        name: 'Meus achados',
+        url: '/meusachados',
         roles: 'default'
     },
 

@@ -30,5 +30,6 @@ Template.perdidoList.events({
   'click .adicionarAdd': function (event, template) {
     appRoute('/perdido/adicionar');
   },
+ 
 
 });

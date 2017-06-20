@@ -8,4 +8,10 @@ Meteor.methods({
   'achado.excluir': function (instituicaoId, achadoId) {
     return App.soa.achado.excluir(instituicaoId, achadoId);
   },
+  'achado.enviarEmail': function (instituicaoId, achadoId, donoId) {
+    return App.soa.achado.enviarEmail(instituicaoId, achadoId, donoId);
+  },
+  'achado.solucionar': function (instituicaoId, achadoId, donoId) {
+    return App.soa.achado.solucionar(instituicaoId, achadoId, donoId);
+  },
 })

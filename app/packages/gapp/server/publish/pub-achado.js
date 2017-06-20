@@ -5,6 +5,7 @@ Meteor.publishComposite('contatoPorUsuarioId', function (usuarioId) {
     },
   }
 });
+
 Meteor.publishComposite('achadoList', function (instituicaoId) {
   return {
     find() {
@@ -32,6 +33,35 @@ Meteor.publishComposite('achadoList', function (instituicaoId) {
     ]
   }
 });
+Meteor.publishComposite('meusAchadosList', function (instituicaoId, userId) {
+  return {
+    find() {
+      return App.query.meusAchadosList(instituicaoId, userId);
+    },
+    children: [
+      {
+        find(achado) {
+          return App.query.categoriaPorId(instituicaoId, achado.categoriaId);
+
+        }
+      },
+      {
+        find(achado) {
+          return App.query.localPorId(instituicaoId, achado.localEncontradoId);
+
+        }
+      },
+      {
+        find(achado) {
+          return App.query.contatoPorUsuarioId(achado.usuarioId);
+
+        }
+      },
+    ]
+  }
+});
+
+
 Meteor.publishComposite('achadoAdd', function (instituicaoId, usuarioId) {
   return {
     find() {

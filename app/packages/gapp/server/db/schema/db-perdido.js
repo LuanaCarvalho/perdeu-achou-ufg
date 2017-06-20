@@ -23,6 +23,20 @@ appDeclareCollection('perdido', {
   usuarioId: {
     type: String,
     label: "Usuário que adicionou"
-  }
+  },
+  dataCadastro: {
+    type: Date,
+    label: "Data que foi cadastrado"
+  },
+  situacao: {
+    type: Number,
+    label: "Situação",
+    allowedValues: App.enum.situacaoObjeto.values,
+  },
+  usuarioDonoId: {
+    type: String,
+    label: "Usuário dono",
+    optional: true
+  },
 })
 

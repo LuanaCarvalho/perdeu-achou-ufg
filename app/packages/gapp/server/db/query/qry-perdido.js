@@ -3,7 +3,15 @@ appDeclareQuery({
   collection: 'perdido',
   sort: ['descricao'],
   fn: function (instituicaoId) {
-    return App.db.perdido.find({instituicaoId});
+    return App.db.perdido.find({ instituicaoId });
+  }
+});
+appDeclareQuery({
+  name: 'meusPerdidosList',
+  collection: 'perdido',
+  sort: ['descricao'],
+  fn: function (instituicaoId, usuarioId) {
+    return App.db.perdido.find({ instituicaoId, usuarioId });
   }
 });
 appDeclareQuery({

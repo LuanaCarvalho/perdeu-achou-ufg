@@ -2,6 +2,8 @@ appDeclareService('perdido', {
   adicionar: function (instituicaoId, dados) {
     dados.instituicaoId = instituicaoId;
     dados.usuarioId = dados.usuarioId || Meteor.userId();
+    dados.dataCadastro = dados.dataCadastro || new Date();
+    dados.situacao = dados.situacao || App.enum.situacaoObjeto.CADASTRADO;
     return App.db.perdido.insert(dados);
   },
   alterar: function (instituicaoId, perdidoId, dados) {

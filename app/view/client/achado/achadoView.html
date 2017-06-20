@@ -12,17 +12,18 @@
         <h5> Informações de contato </h5>
         {{#if achado.localDeixadoId}}
         <p>Seu objeto foi deixado nesse local: <strong>{{localDeixado.nome}}</strong>. Para mais informações, comparace nesse
-          local.</p>
+          local.
+        </p>
         {{else}}
         <p>O usuário <strong>{{nomeUsuario}} </strong> encontrou esse objeto. Você pode entrar em contato com ele atráves de:
-          </p>
+        </p>
         <p> {{#each emails}} E-mail: <strong> {{address}} </strong> <br> {{/each}}
         </p>
         <p>{{#each telefones}} Telefone: <strong> {{numero}} </strong> <br> {{/each}}
         </p>
         {{#if redeSocial}}
         <p> Ou pelas redes sociais </p>
-        <p>{{#each redeSocial}} 
+        <p>{{#each redeSocial}}
           <ul class="share-buttons">
             {{> templateRedeSocial this}}
           </ul>
@@ -31,7 +32,8 @@
         {{/if}} {{/if}}
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored cancelar">Ok</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored {{esseObjetoEhMeu}}">Esse objeto é meu</button>
+        <button class="mdl-button mdl-js-button  cancelar"><Voltar></Voltar></button>
       </div>
     </div>
   </div>

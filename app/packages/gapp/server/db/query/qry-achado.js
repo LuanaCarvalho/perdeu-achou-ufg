@@ -3,9 +3,18 @@ appDeclareQuery({
   collection: 'achado',
   sort: ['descricao'],
   fn: function (instituicaoId) {
-    return App.db.achado.find({instituicaoId});
+    return App.db.achado.find({ instituicaoId });
   }
 });
+appDeclareQuery({
+  name: 'meusAchadosList',
+  collection: 'achado',
+  sort: ['descricao'],
+  fn: function (instituicaoId, usuarioId) {
+    return App.db.achado.find({ instituicaoId, usuarioId });
+  }
+});
+
 appDeclareQuery({
   name: 'achadoPorId',
   collection: 'achado',

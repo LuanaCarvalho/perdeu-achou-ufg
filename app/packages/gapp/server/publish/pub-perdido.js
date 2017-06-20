@@ -25,6 +25,33 @@ Meteor.publishComposite('perdidoList', function (instituicaoId) {
     ]
   }
 });
+Meteor.publishComposite('meusPerdidosList', function (instituicaoId, usuarioId) {
+  return {
+    find() {
+      return App.query.meusPerdidosList(instituicaoId, usuarioId);
+    },
+    children: [
+      {
+        find(perdido) {
+          return App.query.categoriaPorId(instituicaoId, perdido.categoriaId);
+
+        }
+      },
+      {
+        find(perdido) {
+          return App.query.localPorId(instituicaoId, perdido.localEncontradoId);
+
+        }
+      },
+      {
+        find(perdido) {
+          return App.query.contatoPorUsuarioId(perdido.usuarioId);
+
+        }
+      },
+    ]
+  }
+});
 Meteor.publishComposite('perdidoAdd', function (instituicaoId, usuarioId) {
   return {
     find() {

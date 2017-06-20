@@ -4,7 +4,7 @@ appDeclareRoute({
   role: 'default',
   template: 'perdidoList',
   title() {
-    return 'Achados';
+    return 'Perdidos';
   },
   subscriptions() {
     // Meteor.subscribe('perdidoList', 'instUFGSamabaia');
@@ -55,7 +55,6 @@ appDeclareRoute({
   data() {
     var perdido = App.query.perdidoPorId('instUFGSamabaia', this.params._perdidoId).fetch()[0];
     if (!perdido) return;
-    debugger
     var localDeixado = {};
     var contato = App.query.contatoPorId(perdido.contatoId).fetch()[0];
     var categoria = App.query.categoriaPorId('instUFGSamabaia', perdido.categoriaId).fetch()[0];
