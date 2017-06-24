@@ -28,6 +28,11 @@ appDeclareCollection('perdido', {
     type: Date,
     label: "Data que foi cadastrado"
   },
+  dataContato: {
+    type: Date,
+    label: "Data que foi entrado em contato",
+    optional: true,
+  },
   situacao: {
     type: Number,
     label: "Situação",

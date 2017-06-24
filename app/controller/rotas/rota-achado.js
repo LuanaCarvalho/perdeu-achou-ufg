@@ -51,6 +51,7 @@ appDeclareRoute({
   },
   subscriptions: function () {
     Meteor.subscribe('achadoPorId', 'instUFGSamabaia', this.params._achadoId);
+    Meteor.subscribe('contatoPorUsuarioId', Meteor.userId());
   },
   data() {
     var achado = App.query.achadoPorId('instUFGSamabaia', this.params._achadoId).fetch()[0];

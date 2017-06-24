@@ -45,13 +45,24 @@ appDeclareService('achado', {
     var subject = 'O objeto cadastrado foi encontrado o dono - Perdeu! Achou!';
     var text = 'Olá,\nO objeto cadastrado com as seguints descrição: \n\n ->' + achado.descricao + '\n\nAparetemente pertence ao usuário' + dono.profile.name + '\n\nVocê pode entrar em contato com ele para entregar o objeto através das informações abaixo: \n\n' + informacoesDeContatoDoUsuarioDono(contatoDono) + '\n\n\nEquipe Perdeu? Achou!';
     Meteor.call('sendEmail', email, from, subject, text);
+    return App.soa.achado.entrarEmContato(instituicaoId, achadoId);
   },
+  entrarEmContato: function (instituicaoId, achadoId) {
+    return App.db.achado({
+      _id: achadoId,
+      instituicaoId
+    }, {
+        $set: {
+          dataContato: new Date()
+        }
+      })
+  }
 })
 
 function informacoesDeContatoDoUsuarioDono(contato) {
-  if(!contato) return 'Não temos informações de contato :('
+  if (!contato) return 'Não temos informações de contato :('
   var emails = contato.emails.map((email) => email.address).join('');
   var redeSocial = contato.redeSocial.map((rede) => rede.url).join('\n');
   var telefones = contato.telefones.map((telefone) => telefone.numero).join('');
-  return 'Email: ' + emails + '\nTelefone: '+ telefones + '\nRede sociais: ' + redeSocial;
+  return 'Email: ' + emails + '\nTelefone: ' + telefones + '\nRede sociais: ' + redeSocial;
 }

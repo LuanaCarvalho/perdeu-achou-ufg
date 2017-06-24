@@ -28,8 +28,11 @@ Template.perdidoList.events({
     }
   },
   'click .adicionarAdd': function (event, template) {
+    debugger
+    if (this.entregar)
+      return appRoute('/achado/adicionar');
     appRoute('/perdido/adicionar');
   },
- 
+
 
 });

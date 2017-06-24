@@ -14,6 +14,7 @@ Accounts.onCreateUser((options, user) => {
           oldUser.services = {};
         }
         if (service === "google" || service === "facebook" || service === "twitter") {
+          console.dir({oldUser})
           oldUser.services[service] = user.services[service];
           Meteor.users.remove(oldUser._id);
           user = oldUser;
@@ -28,7 +29,15 @@ Accounts.onCreateUser((options, user) => {
           } else {
             throw new Meteor.Error(500, service + " account has no email attached");
           }
-          user.profile.name = user.services[service].name;
+          console.dir(user.services[service])
+          if(service === 'google') {
+            user.profile.name = user.services[service].name;
+            user.profile.avatar = user.services[service].picture;
+          }
+          if(service === 'facebook') {
+            user.profile.name = user.services[service].name;
+            user.profile.avatar = user.services[service].picture;
+          }
         }
       }
     } 

@@ -1,14 +1,19 @@
 Template.criarContaUsuario.events({
     'click .criarConta': function (event, templateInstance) {
+        var nome = qs('#nome').value;
         var email = qs('#email').value;
         var password = qs('#password').value
-        if (email && password) {
+        if (nome && email && password) {
             Meteor.call('usuario.criarconta', email, password, function (err, userId) {
                 if (!err) {
                     Meteor.loginWithPassword(email, password, function (err) {
                         Meteor.call('permissao.adicionar', Meteor.userId(), ['default'], function (err) {
                             if (!err) {
-                                Router.go('/');
+                                Meteor.call('usuario.nome', Meteor.userId(), nome, function (err) {
+                                    if (!err) {
+                                        Router.go('/');
+                                    }
+                                });
                             }
                         });
                     });

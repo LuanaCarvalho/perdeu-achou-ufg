@@ -1,22 +1,22 @@
 appDeclareRoute({
-  url: '/entregar',
+  url: '/encontrar',
   search: '/',
   role: 'default',
-  template: 'perdidoList',
+  template: 'achadoList',
   title() {
     return 'Objetos achados';
   },
   subscriptions() {
     // Meteor.subscribe('perdidoList', 'instUFGSamabaia');
-    Meteor.subscribe('perdidoList', 'instUFGSamabaia');
+    Meteor.subscribe('achadoList', 'instUFGSamabaia');
   },
   data() {
-    var perdido = App.query.perdidoList('instUFGSamabaia').fetch().sort(function (a, b) {
+    var achado = App.query.achadoList('instUFGSamabaia').fetch().sort(function (a, b) {
       return new Date(b.dataCadastro) - new Date(a.dataCadastro);
     });
     return {
-      perdido,
-      entregar: true
+      achado,
+      encontrar: true
     }
   }
 });

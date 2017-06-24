@@ -51,6 +51,7 @@ appDeclareRoute({
   },
   subscriptions: function () {
     Meteor.subscribe('perdidoPorId', 'instUFGSamabaia', this.params._perdidoId);
+    Meteor.subscribe('contatoPorUsuarioId', Meteor.userId());
   },
   data() {
     var perdido = App.query.perdidoPorId('instUFGSamabaia', this.params._perdidoId).fetch()[0];

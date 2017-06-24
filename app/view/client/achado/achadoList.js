@@ -28,6 +28,8 @@ Template.achadoList.events({
     }
   },
   'click .adicionarAdd': function (event, template) {
+    if (this.encontrar)
+      return appRoute('/perdido/adicionar');
     appRoute('/achado/adicionar');
   },
 

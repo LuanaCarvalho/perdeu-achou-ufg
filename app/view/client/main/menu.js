@@ -44,6 +44,12 @@ var _menu = [
         url: '/meusachados',
         roles: 'default'
     },
+    {
+        icon: 'person',
+        name: 'Meus dados',
+        url: '/meusdados',
+        roles: 'default'
+    },
 
 ]
 
