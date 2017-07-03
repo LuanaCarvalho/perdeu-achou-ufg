@@ -30,7 +30,7 @@ appDeclareService('perdido', {
     var email = usuario.emails[0].address;
     var from = 'perdeuachou.ufg@gmail.com';
     var subject = 'O objeto cadastrado foi encontrado - Perdeu! Achou!';
-    var text = 'Olá,\nO objeto cadastrado com as seguints descrição: \n\n ->' + perdido.descricao + '\n\nAparetemente está com o usuário' + pessoaQueEncontrou.profile.name + '\n\nVocê pode entrar em contato com ele para entregar o objeto através das informações abaixo: \n\n' + informacoesDeContatoDoUsuarioDono(contatoPessoaQueEncontrou) + '\n\n\nEquipe Perdeu? Achou!';
+    var text = 'Olá,\n\nO objeto cadastrado com as seguints descrição: \n\n ->' + perdido.descricao + '\n\nAparetemente está com o usuário' + pessoaQueEncontrou.profile.name + '\n\nVocê pode entrar em contato com ele para entregar o objeto através das informações abaixo: \n\n' + informacoesDeContatoDoUsuarioDono(contatoPessoaQueEncontrou) + '\n\n\nEquipe Perdeu? Achou!';
     Meteor.call('sendEmail', email, from, subject, text);
     return App.soa.perdido.entrarEmContato(instituicaoId, perdidoId);
   },
