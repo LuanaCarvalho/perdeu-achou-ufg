@@ -72,20 +72,30 @@ initUsuario = function () {
     {
       email: 'gislainycrisostomo@gmail.com',
       password: '123',
+      nome: 'Gislainy Crisóstomo Velasco',
       roles: ['super']
     },
     {
       email: 'gislainy@outlook.com',
+      nome: 'Gislainy Crisóstomo Velasco',
       password: '123',
       roles: ['default']
     },
     {
-      email: 'pabllo@teste.com',
+      nome: 'Pabllo Felipe',
+      email: 'pabllofilipe@hotmail.com',
       password: '123',
       roles: ['default']
     },
     {
-      email: 'luana@teste.com',
+      nome: 'Luana Carvalho',
+      email: 'luanasilvac@gmail.com',
+      password: '123',
+      roles: ['default']
+    },
+    {
+      nome: 'Gustavo Souza',
+      email: 'gustavocsouza19@gmail.com',
       password: '123',
       roles: ['default']
     }
@@ -97,6 +107,7 @@ initUsuario = function () {
     App.soa.usuario.criarConta(user.email, user.password);
     var userAdd = App.query.usuarioPorEmail(user.email).fetch()[0] || {};
     App.soa.permissao.adicionar(userAdd._id, user.roles);
+    App.soa.usuario.nome(userAdd._id, user.nome);
 
   });
 }
