@@ -39,6 +39,7 @@ Template.perdidoView.events({
         confirmButtonText: 'Sim, esse objeto está comigo!'
       }).then(function () {
         Meteor.call('perdido.enviarEmail', 'instUFGSamabaia', perdidoId, Meteor.userId(), function (err) {
+          console.log(err)
           if (err) {
             swal('Oops...', 'Ocorreu um erro ao tentar entrar em contato com a pessoa, tente novamente!', 'error');
           } else {

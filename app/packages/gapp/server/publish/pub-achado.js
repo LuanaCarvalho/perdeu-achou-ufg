@@ -1,9 +1,5 @@
-Meteor.publishComposite('contatoPorUsuarioId', function (usuarioId) {
-  return {
-    find() {
-      return App.query.contatoPorUsuarioId(usuarioId);
-    },
-  }
+Meteor.publish('contatoPorUsuarioId', function (usuarioId) {
+  return App.query.contatoPorUsuarioId(usuarioId);
 });
 
 Meteor.publishComposite('achadoList', function (instituicaoId) {

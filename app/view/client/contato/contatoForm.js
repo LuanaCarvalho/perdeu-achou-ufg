@@ -7,8 +7,8 @@ Template.contatoForm.onCreated(function () {
 
 Template.contatoForm.onRendered(function () {
 	var self = this;
-	if (self.data && self.data.contato) {
-		var contato = this.data.contato;
+	if (App.state.router.data && App.state.router.data.contato) {
+		var contato = App.state.router.data.contato;
 		var email = contato.emails.map((e, idx) => {
 			e.index = idx;
 			e.add = false;

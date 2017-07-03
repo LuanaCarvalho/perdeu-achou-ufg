@@ -44,6 +44,7 @@ Template.achadoView.events({
         confirmButtonText: 'Sim, esse objeto é meu!'
       }).then(function () {
         Meteor.call('achado.enviarEmail', 'instUFGSamabaia', achadoId, Meteor.userId(), function (err) {
+          console.log(err)
           if (err) {
             swal('Oops...', 'Ocorreu um erro ao tentar entrar em contato com a pessoa, tente novamente!', 'error');
           } else {
